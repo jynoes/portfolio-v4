@@ -1,0 +1,1026 @@
+/* ================================================================
+   STYLE.CSS — Portfolio Design System
+   ================================================================
+
+   TABLE OF CONTENTS
+   -----------------
+   1.  Design Tokens (CSS Variables) ← EDIT COLORS & SIZES HERE
+   2.  Base Reset
+   3.  Typography Scale
+   4.  Utility Classes
+   5.  Navigation
+   6.  Pages & Tab Routing
+   7.  Hero Section
+   8.  Buttons
+   9.  Section Headers & Dividers
+  10.  Cards (generic)
+  11.  Project Cards & Modal
+  12.  Experience / Timeline
+  13.  Skills Grid
+  14.  Contact Form
+  15.  Social Links
+  16.  Footer
+  17.  Scroll Fade-in Animation
+  18.  Dark / Light Mode Toggle Button
+  19.  Responsive (mobile)
+================================================================ */
+
+
+/* ================================================================
+   1. DESIGN TOKENS
+   ----------------------------------------------------------------
+   ★ EDIT THIS SECTION to restyle the entire site.
+   Every color, font, size, and spacing value lives here.
+   Change a value once → it updates everywhere it's used.
+================================================================ */
+
+:root {
+
+  /* ── Dark Mode Colors (default) ───────────────────────────── */
+  --color-bg:           #0f0f11;   /* Page background               */
+  --color-surface:      #18181b;   /* Cards, panels                 */
+  --color-surface-alt:  #1f1f23;   /* Hover states, inputs          */
+  --color-border:       #2e2e33;   /* Subtle borders                */
+  --color-border-glow:  #3f3f46;   /* Brighter border on hover      */
+
+  --color-text:         #fafafa;   /* Primary text                  */
+  --color-text-muted:   #a1a1aa;   /* Secondary text / descriptions */
+  --color-text-faint:   #52525b;   /* Placeholders, captions        */
+
+  /* ── Brand Accent ─────────────────────────────────────────── */
+  /* ★ Change --color-accent to recolor buttons, links, and highlights */
+  --color-accent:       #6366f1;             /* Indigo — main brand color  */
+  --color-accent-light: #818cf8;             /* Lighter for hover & links  */
+  --color-accent-glow:  rgba(99,102,241,.15); /* Transparent accent for glows */
+
+  /* ── Secondary Palette ────────────────────────────────────── */
+  --color-teal:         #14b8a6;   /* Used on skill bars, secondary accents */
+  --color-amber:        #f59e0b;   /* Highlights, warnings                  */
+  --color-green:        #22c55e;   /* "Available" status dot                */
+  --color-rose:         #f43f5e;   /* Error messages                        */
+
+  /* ── Typography ───────────────────────────────────────────── */
+  /* ★ Change these to any Google Font you import in index.html   */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'Fira Code', monospace;
+
+  /* ── Spacing & Shape ──────────────────────────────────────── */
+  /* ★ Increase radius values for a rounder look; decrease for sharp */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+
+  --section-pad: 5rem;    /* Top/bottom padding for each page section */
+  --content-max: 900px;   /* Max width of all content                 */
+  --nav-height:  64px;    /* Height of the fixed nav bar              */
+
+  /* ── Transitions ──────────────────────────────────────────── */
+  --transition-fast:   0.15s ease;
+  --transition-base:   0.25s ease;
+  --transition-slow:   0.45s ease;
+}
+
+
+/* ── Light Mode Override ──────────────────────────────────────
+   When the <html> tag has class="light", these values replace
+   the dark defaults above. JavaScript toggles that class.
+──────────────────────────────────────────────────────────────── */
+html.light {
+  --color-bg:           #f8f8f9;
+  --color-surface:      #ffffff;
+  --color-surface-alt:  #f1f1f4;
+  --color-border:       #e4e4e7;
+  --color-border-glow:  #c4c4c9;
+
+  --color-text:         #09090b;
+  --color-text-muted:   #52525b;
+  --color-text-faint:   #a1a1aa;
+
+  --color-accent:       #4f46e5;
+  --color-accent-light: #6366f1;
+  --color-accent-glow:  rgba(79,70,229,.1);
+}
+
+
+/* ================================================================
+   2. BASE RESET
+================================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--color-accent-light);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover { color: var(--color-text); }
+
+code, pre {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 3px;
+}
+
+
+/* ================================================================
+   3. TYPOGRAPHY SCALE
+   Uses clamp() so headings scale smoothly on all screen sizes.
+================================================================ */
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+p {
+  color: var(--color-text-muted);
+  line-height: 1.75;
+}
+
+/* Gradient text — used on the hero name */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-teal) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+/* ================================================================
+   4. UTILITY CLASSES
+================================================================ */
+
+/* Centers content and caps its max width */
+.container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Top/bottom breathing room for each section */
+.section {
+  padding: var(--section-pad) 0;
+}
+
+/* Monospace label pill — used above section headings */
+.label {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-accent-light);
+  background: var(--color-accent-glow);
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  margin-bottom: 1rem;
+}
+
+/* Small technology tag (e.g. "React", "TypeScript") */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: var(--color-surface-alt);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+/* Status dot — pulsing green dot for "available" */
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-green);
+  border-radius: 50%;
+  animation: pulse-dot 2.2s infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1;   transform: scale(1);    }
+  50%       { opacity: 0.5; transform: scale(0.82); }
+}
+
+
+/* ================================================================
+   5. NAVIGATION
+================================================================ */
+
+#nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.75rem;
+  background: rgba(15, 15, 17, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition-base), border-color var(--transition-base);
+}
+
+/* In light mode the frosted glass uses a lighter base */
+html.light #nav {
+  background: rgba(248, 248, 249, 0.88);
+}
+
+/* Logo text — uses monospace font */
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  text-decoration: none;
+  user-select: none;
+}
+
+.nav-logo span { color: var(--color-accent-light); }
+
+/* Right side of nav: tabs + theme toggle */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── Tab list ────────────────────────────────────────────────── */
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  list-style: none;
+}
+
+.nav-tab a {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.nav-tab a:hover {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+/* Active/current tab gets a subtle outlined look */
+.nav-tab a.active {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+/* ── Dark/Light Toggle Button ─────────────────────────────────
+   A small icon button that sits next to the tabs.
+──────────────────────────────────────────────────────────────── */
+#theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+#theme-toggle:hover {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  border-color: var(--color-border-glow);
+}
+
+/* ── Mobile Hamburger ─────────────────────────────────────────── */
+#hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+}
+
+#hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+/* Mobile dropdown menu */
+#mobile-menu {
+  display: none;
+  position: fixed;
+  top: var(--nav-height);
+  left: 0;
+  right: 0;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 1.5rem;
+  z-index: 99;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+#mobile-menu.open { display: flex; }
+
+#mobile-menu a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: color var(--transition-fast);
+}
+
+#mobile-menu a:last-child { border-bottom: none; }
+#mobile-menu a:hover { color: var(--color-text); }
+
+
+/* ================================================================
+   6. PAGES & TAB ROUTING
+   JavaScript toggles the .active class to show/hide pages.
+================================================================ */
+
+.page {
+  display: none;
+  min-height: 100vh;
+  padding-top: var(--nav-height);
+}
+
+.page.active { display: block; }
+
+
+/* ================================================================
+   7. HERO SECTION
+================================================================ */
+
+#hero {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dot-grid background texture */
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Ambient glow orb behind hero text */
+#hero::after {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* "Available for opportunities" eyebrow line */
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-tagline {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+}
+
+/* CTA button row below the hero text */
+.hero-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+
+/* ================================================================
+   8. BUTTONS
+================================================================ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.65rem 1.3rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast),
+              border-color var(--transition-fast), transform var(--transition-fast);
+  border: 1px solid transparent;
+  text-decoration: none;
+  font-family: var(--font-sans);
+}
+
+/* Filled accent button */
+.btn-primary {
+  background: var(--color-accent);
+  color: #fff;
+  border-color: var(--color-accent);
+}
+
+.btn-primary:hover {
+  background: var(--color-accent-light);
+  border-color: var(--color-accent-light);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Outlined ghost button */
+.btn-ghost {
+  background: transparent;
+  color: var(--color-text-muted);
+  border-color: var(--color-border);
+}
+
+.btn-ghost:hover {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+  border-color: var(--color-border-glow);
+}
+
+/* Full-width variant */
+.btn-full { width: 100%; justify-content: center; }
+
+
+/* ================================================================
+   9. SECTION HEADERS & DIVIDERS
+================================================================ */
+
+/* Row with a heading and a horizontal rule extending to the right */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.section-header h2 { margin: 0; white-space: nowrap; }
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+
+/* ================================================================
+   10. GENERIC CARDS
+================================================================ */
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: border-color var(--transition-base), transform var(--transition-base);
+}
+
+.card:hover {
+  border-color: var(--color-border-glow);
+  transform: translateY(-2px);
+}
+
+
+/* ================================================================
+   11. PROJECT CARDS & MODAL
+================================================================ */
+
+/* ── Card Grid ───────────────────────────────────────────────── */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.project-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--transition-base), transform var(--transition-base);
+}
+
+.project-card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-3px);
+}
+
+/* Coloured thumbnail area at the top of each card */
+.project-thumb {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  position: relative;
+}
+
+/* Gradient overlay fades thumb into card body */
+.project-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, var(--color-surface) 100%);
+  pointer-events: none;
+}
+
+.project-body { padding: 1.25rem; }
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 0.75rem;
+}
+
+/* ── Project Detail Modal ─────────────────────────────────────
+   Full-screen overlay. JS adds .open to show it.
+──────────────────────────────────────────────────────────────── */
+#project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+#project-modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Dark scrim behind the modal panel */
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  cursor: pointer;
+}
+
+html.light .modal-overlay { background: rgba(0, 0, 0, 0.45); }
+
+/* The white/dark panel that slides up */
+.modal-panel {
+  position: relative;
+  z-index: 1;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 640px;
+  max-height: 88vh;
+  overflow-y: auto;
+  transform: translateY(24px);
+  transition: transform var(--transition-base);
+}
+
+#project-modal.open .modal-panel { transform: translateY(0); }
+
+/* Coloured header band inside the modal */
+.modal-hero {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.modal-body { padding: 1.75rem 2rem 2rem; }
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.modal-close:hover {
+  background: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+.modal-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  color: var(--color-text-faint);
+  font-family: var(--font-mono);
+}
+
+.modal-links {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+
+/* ================================================================
+   12. EXPERIENCE / TIMELINE
+================================================================ */
+
+.experience-list { display: flex; flex-direction: column; }
+
+.exp-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: background var(--transition-fast);
+}
+
+.exp-item:first-child { border-top: 1px solid var(--color-border); }
+
+.exp-year {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--color-text-faint);
+  padding-top: 3px;
+}
+
+.exp-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.exp-company {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-accent-light);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.exp-role {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.exp-desc {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: 0.2rem;
+  line-height: 1.6;
+}
+
+
+/* ================================================================
+   13. SKILLS GRID
+================================================================ */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.1rem;
+}
+
+.skill-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem 1.25rem;
+}
+
+.skill-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.7rem;
+}
+
+.skill-bar-bg {
+  height: 4px;
+  background: var(--color-surface-alt);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-teal));
+  border-radius: 2px;
+  /* Width starts at 0 and is animated to data-level by JavaScript */
+  width: 0;
+  transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+/* ================================================================
+   14. CONTACT FORM
+================================================================ */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.form-field label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.form-field input,
+.form-field textarea {
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.9rem;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  outline: none;
+  transition: border-color var(--transition-fast);
+  width: 100%;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--color-accent);
+}
+
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+  color: var(--color-text-faint);
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+/* Status message shown after submit */
+#form-status {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  min-height: 1.2em;
+}
+
+
+/* ================================================================
+   15. SOCIAL LINKS
+================================================================ */
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.8rem 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  text-decoration: none;
+}
+
+.social-link:hover {
+  background: var(--color-surface-alt);
+  border-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.social-handle {
+  margin-left: auto;
+  color: var(--color-text-faint);
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+}
+
+
+/* ================================================================
+   16. FOOTER
+================================================================ */
+
+footer {
+  border-top: 1px solid var(--color-border);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+footer p {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-faint);
+  line-height: 2;
+}
+
+footer span { color: var(--color-accent-light); }
+
+
+/* ================================================================
+   17. SCROLL FADE-IN ANIMATION
+   Elements with class "fade-in" start invisible.
+   JavaScript's IntersectionObserver adds .visible when
+   the element enters the viewport.
+================================================================ */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* ================================================================
+   18. ABOUT GRID (photo + bio side by side)
+================================================================ */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.about-photo {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: var(--radius-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4rem;
+  overflow: hidden;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* ================================================================
+   19. RESPONSIVE
+   Below 768px: two-column grids become single column.
+   Below 640px: nav tabs hide, hamburger appears.
+================================================================ */
+
+@media (max-width: 768px) {
+  .contact-grid  { grid-template-columns: 1fr; gap: 2rem; }
+  .about-grid    { grid-template-columns: 1fr; }
+  .about-photo   { max-width: 280px; margin: 0 auto; aspect-ratio: 1; }
+}
+
+@media (max-width: 640px) {
+  :root { --section-pad: 3rem; }
+
+  .nav-tabs  { display: none; }
+  #hamburger { display: flex; }
+
+  .exp-item  { grid-template-columns: 1fr; gap: 0.25rem; }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-cta-row { flex-direction: column; }
+  .btn          { justify-content: center; }
+}

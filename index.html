@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       SEO & Social Sharing Meta Tags
+       ★ EDIT: Replace with your real name and description
+  ============================================================ -->
+  <title>Your Name | Portfolio</title>
+  <meta name="description" content="Portfolio of Your Name — developer and designer." />
+  <meta name="author" content="Your Name" />
+
+  <!-- Open Graph (for link previews on Facebook, LinkedIn, etc.) -->
+  <meta property="og:title"       content="Your Name | Portfolio" />
+  <meta property="og:description" content="Developer and designer based in Manila." />
+  <meta property="og:type"        content="website" />
+  <!-- <meta property="og:image" content="og-image.png" /> -->
+
+  <!-- ============================================================
+       FONTS
+       ★ EDIT: Swap "Inter" and "Fira+Code" for any Google Fonts pair.
+       Then update --font-sans and --font-mono in style.css.
+  ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- ============================================================
+       STYLESHEET — all design, layout, and colors
+  ============================================================ -->
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+
+  <!-- ==========================================================
+       NAVIGATION BAR
+  =========================================================== -->
+  <nav id="nav" role="navigation" aria-label="Main navigation">
+
+    <!-- Logo: text is injected by renderNav() in script.js -->
+    <a class="nav-logo" href="#" data-page="home" aria-label="Go to home">
+      <!-- Content set by script.js -->
+    </a>
+
+    <div class="nav-right">
+
+      <!-- Desktop Tab Navigation -->
+      <!-- data-page must match a <main id="page-{value}"> below -->
+      <ul class="nav-tabs" role="list">
+        <li class="nav-tab"><a href="#" data-page="home"    class="active">Work</a></li>
+        <li class="nav-tab"><a href="#" data-page="about"            >About</a></li>
+        <li class="nav-tab"><a href="#" data-page="contact"          >Contact</a></li>
+        <!-- Resume: href is set dynamically from PORTFOLIO_DATA.resume -->
+        <li class="nav-tab">
+          <a href="resume.pdf" class="resume-link" target="_blank" rel="noopener">
+            Resume ↗
+          </a>
+        </li>
+      </ul>
+
+      <!-- Dark / Light Mode Toggle -->
+      <!-- Icon and aria-label are set by script.js updateToggleIcon() -->
+      <button id="theme-toggle" aria-label="Toggle theme">☀️</button>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+    </div><!-- /nav-right -->
+  </nav>
+
+
+  <!-- Mobile Dropdown Menu -->
+  <div id="mobile-menu" role="navigation" aria-label="Mobile navigation">
+    <a href="#" data-page="home"   >Work</a>
+    <a href="#" data-page="about"  >About</a>
+    <a href="#" data-page="contact">Contact</a>
+    <a href="resume.pdf" class="resume-link" target="_blank" rel="noopener">Resume ↗</a>
+  </div>
+
+
+  <!-- ==========================================================
+       PROJECT DETAIL MODAL
+       Shared by all project cards. Content is injected by
+       openProject() in script.js when a card is clicked.
+  =========================================================== -->
+  <div id="project-modal" role="dialog" aria-modal="true" aria-label="Project details">
+
+    <!-- Clicking the dark scrim closes the modal -->
+    <div class="modal-overlay"></div>
+
+    <div class="modal-panel">
+      <!-- Close button -->
+      <button class="modal-close" aria-label="Close modal">✕</button>
+
+      <!-- Coloured thumbnail (background + emoji set by JS) -->
+      <div class="modal-hero"></div>
+
+      <div class="modal-body">
+        <!-- Tags row -->
+        <div class="modal-tags project-tags" style="margin-bottom: 1rem;"></div>
+
+        <!-- Title -->
+        <h2 class="modal-title" style="margin-bottom: 0.75rem;"></h2>
+
+        <!-- Full description -->
+        <p class="modal-detail" style="font-size: 0.95rem; line-height: 1.75;"></p>
+
+        <!-- Action links (Live site, GitHub, etc.) -->
+        <div class="modal-links"></div>
+      </div>
+    </div>
+
+  </div><!-- /project-modal -->
+
+
+  <!-- ==========================================================
+       PAGE: HOME (Work)
+       id must be "page-{tab name}" to match showPage() in JS
+  =========================================================== -->
+  <main id="page-home" class="page active">
+
+    <!-- ── Hero ──────────────────────────────────────────────── -->
+    <section id="hero" class="section" aria-label="Introduction">
+      <div class="container hero-content">
+
+        <!-- Availability eyebrow line -->
+        <div class="hero-eyebrow">
+          <div class="status-dot" title="Availability status"></div>
+          <!-- Text set by renderHero() -->
+          <span class="hero-tagline" id="hero-tagline"></span>
+        </div>
+
+        <!-- Main heading — set by renderHero() -->
+        <h1 id="hero-heading"></h1>
+
+        <!-- Short bio — set by renderHero() -->
+        <p id="hero-bio" style="margin-top: 1.25rem; max-width: 520px; font-size: 1.05rem;"></p>
+
+        <!-- CTA Buttons -->
+        <!-- data-page triggers showPage() via .hero-cta-link listener in JS -->
+        <div class="hero-cta-row">
+          <a href="#" data-page="contact" class="btn btn-primary hero-cta-link">
+            Get in touch →
+          </a>
+          <a href="#" data-page="about" class="btn btn-ghost hero-cta-link">
+            About me
+          </a>
+        </div>
+
+      </div>
+    </section><!-- /hero -->
+
+
+    <!-- ── Experience ─────────────────────────────────────────── -->
+    <section class="section" style="padding-top: 0;" aria-label="Experience">
+      <div class="container">
+
+        <div class="section-header fade-in">
+          <div class="label">Experience</div>
+          <div class="divider-line"></div>
+        </div>
+
+        <!-- Items injected by renderExperience() in script.js -->
+        <div class="experience-list" id="experience-list"></div>
+
+      </div>
+    </section><!-- /experience -->
+
+
+    <!-- ── Projects ───────────────────────────────────────────── -->
+    <section class="section" style="padding-top: 0;" aria-label="Projects">
+      <div class="container">
+
+        <div class="section-header fade-in">
+          <div class="label">Projects</div>
+          <div class="divider-line"></div>
+        </div>
+
+        <!-- Cards injected by renderProjects() in script.js -->
+        <div class="project-grid" id="project-grid"></div>
+
+      </div>
+    </section><!-- /projects -->
+
+  </main><!-- /page-home -->
+
+
+  <!-- ==========================================================
+       PAGE: ABOUT
+  =========================================================== -->
+  <div id="page-about" class="page" aria-label="About me">
+    <section class="section">
+      <div class="container">
+
+        <div class="label fade-in">About</div>
+
+        <div class="about-grid fade-in">
+
+          <!-- Photo — src set by renderAbout() -->
+          <div class="about-photo" id="about-photo"></div>
+
+          <!-- Bio side -->
+          <div>
+            <!-- Heading set by renderAbout() -->
+            <h2 id="about-heading" style="margin-bottom: 1.25rem;"></h2>
+
+            <!-- Paragraphs injected by renderAbout() -->
+            <div id="about-bio" style="display: flex; flex-direction: column; gap: 0.9rem;"></div>
+
+            <!-- Skills subsection -->
+            <div style="margin-top: 2.25rem;">
+
+              <div class="section-header" style="margin-bottom: 1.25rem;">
+                <span class="label" style="margin-bottom: 0;">Skills</span>
+                <div class="divider-line"></div>
+              </div>
+
+              <!-- Skill cards injected by renderSkills() -->
+              <div class="skills-grid" id="skills-grid"></div>
+
+            </div>
+
+          </div>
+        </div><!-- /about-grid -->
+
+      </div>
+    </section>
+  </div><!-- /page-about -->
+
+
+  <!-- ==========================================================
+       PAGE: CONTACT
+  =========================================================== -->
+  <div id="page-contact" class="page" aria-label="Contact">
+    <section class="section">
+      <div class="container">
+
+        <div class="label fade-in">Contact</div>
+        <h2 class="fade-in" style="margin-bottom: 0.5rem;">Let's talk.</h2>
+        <p class="fade-in" style="margin-bottom: 2.5rem; max-width: 480px;">
+          I'm always up for interesting conversations. Use the form or any link below.
+        </p>
+
+        <div class="contact-grid fade-in">
+
+          <!-- ── Contact Form ───────────────────────────── -->
+          <div>
+
+            <div class="form-field">
+              <label for="cf-name">Name</label>
+              <input
+                id="cf-name"
+                type="text"
+                placeholder="Your name"
+                autocomplete="name"
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="cf-email">Email</label>
+              <input
+                id="cf-email"
+                type="email"
+                placeholder="you@email.com"
+                autocomplete="email"
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="cf-message">Message</label>
+              <textarea
+                id="cf-message"
+                placeholder="What's on your mind?"
+              ></textarea>
+            </div>
+
+            <!-- submitContact() called in script.js -->
+            <button
+              id="cf-submit"
+              class="btn btn-primary btn-full"
+              onclick="submitContact()"
+            >
+              Send message →
+            </button>
+
+            <!-- Status message set by setStatus() in script.js -->
+            <div id="form-status" aria-live="polite"></div>
+
+          </div><!-- /form -->
+
+          <!-- ── Social Links ───────────────────────────── -->
+          <div>
+            <p style="font-size: 0.85rem; margin-bottom: 1rem;">Or find me here</p>
+
+            <!-- Links injected by renderContact() in script.js -->
+            <div class="social-links" id="social-list"></div>
+
+          </div>
+
+        </div><!-- /contact-grid -->
+
+      </div>
+    </section>
+  </div><!-- /page-contact -->
+
+
+  <!-- ==========================================================
+       FOOTER — shown on all pages
+  =========================================================== -->
+  <footer>
+    <p>
+      Designed & built by
+      <!-- Name set by renderFooter() in script.js -->
+      <span id="footer-name"></span>
+    </p>
+    <p>2025</p>
+  </footer>
+
+
+  <!-- ==========================================================
+       JAVASCRIPT — loaded at the bottom so HTML is ready first
+  =========================================================== -->
+  <script src="/script.js"></script>
+
+</body>
+</html>
