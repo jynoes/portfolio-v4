@@ -30,7 +30,7 @@
 const PORTFOLIO_DATA = {
 
   /* ── Identity ─────────────────────────────────────────────── */
-  name:        "Your Name",
+  name:        "Jynoe Sabido",
   logoPrefix:  "your",    /* nav logo shows: [logoPrefix]name */
   logoSuffix:  "name",
   role:        "Full-Stack Developer & Designer",
