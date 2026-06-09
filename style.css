@@ -49,8 +49,8 @@
 
   /* ── Brand Accent ─────────────────────────────────────────── */
   /* ★ Change --color-accent to recolor buttons, links, and highlights */
-  --color-accent:       #6366f1;             /* Indigo — main brand color  */
-  --color-accent-light: #818cf8;             /* Lighter for hover & links  */
+  --color-accent:       #d8e662;             /* Indigo — main brand color  */
+  --color-accent-light: #ccce6a;             /* Lighter for hover & links  */
   --color-accent-glow:  rgba(99,102,241,.15); /* Transparent accent for glows */
 
   /* ── Secondary Palette ────────────────────────────────────── */

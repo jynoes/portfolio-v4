@@ -34,9 +34,9 @@ const PORTFOLIO_DATA = {
   logoPrefix:  "your",    /* nav logo shows: [logoPrefix]name */
   logoSuffix:  "name",
   role:        "Full-Stack Developer & Designer",
-  location:    "Manila, Philippines",
+  location:    "Quezon City, Philippines",
   available:   true,       /* true = green dot + "Available" shown */
-  email:       "you@email.com",
+  email:       "jynoe.sabido22@gmail.com",
   resume:      "resume.pdf",   /* path or URL to your resume PDF */
 
   /* ── Hero ─────────────────────────────────────────────────── */
@@ -64,22 +64,22 @@ const PORTFOLIO_DATA = {
   /* Each object: { years, company, role, desc } */
   experience: [
     {
-      years:   "2025 — Now",
-      company: "Company Name",
-      role:    "Frontend Engineer",
-      desc:    "Short description of what you do. Mention a tool or result you're proud of.",
-    },
-    {
-      years:   "2024",
-      company: "Another Company",
-      role:    "Product Design Intern",
-      desc:    "What you shipped and what you learned.",
+      years:   "2024 - Now",
+      company: "U-BIX Corporation",
+      role:    "UI/UX Designer",
+      desc:    "Designed responsive website layouts, wireframes, and interactive prototypes in Figma for multiple brands and business units. Built and maintained WordPress websites using Elementor with a focus on responsive, pixel-perfect implementation. Collaborated with marketing teams to create conversion-driven landing pages and digital experiences, improved website visibility through SEO optimization and Google Search Console monitoring, and ensured brand consistency across websites and digital marketing assets.",
     },
     {
       years:   "2023",
-      company: "Freelance",
-      role:    "Web Developer",
-      desc:    "Designed and built websites for local businesses.",
+      company: "PADES Printing",
+      role:    "Frontend Web Developer (Freelance)",
+      desc:    "Designed website layouts and user interfaces in Figma based on business requirements, and developed responsive websites using ReactJS, HTML, CSS, JavaScript, and Bootstrap. Collaborated directly with clients to enhance usability, improve user experience, and deliver solutions aligned with their goals.",
+    },
+    {
+      years:   "2022",
+      company: "VisibleTeam Solutions OPC",
+      role:    "WordPress Developer Intern",
+      desc:    "Built and maintained WordPress websites using Elementor, translating design concepts into responsive and functional web pages. Managed website content, plugins, and themes while ensuring optimal performance, reliability, and a seamless user experience.",
     },
   ],
 
@@ -159,8 +159,8 @@ const PORTFOLIO_DATA = {
   /* ── Social Links ─────────────────────────────────────────── */
   /* icon: any emoji. url: full URL. handle: text shown on the right */
   socials: [
-    { icon: "🐙", label: "GitHub",     url: "#", handle: "github.com/yourname"    },
-    { icon: "💼", label: "LinkedIn",   url: "#", handle: "linkedin.com/in/yourname"},
+    { icon: "🐙", label: "GitHub",     url: "#", handle: "github.com/jynoes"    },
+    { icon: "💼", label: "LinkedIn",   url: "#", handle: "www.linkedin.com/in/jynoe-sabido-aab142248"},
     { icon: "🐦", label: "X / Twitter",url: "#", handle: "@yourhandle"             },
     { icon: "✉️", label: "Email",      url: "mailto:you@email.com", handle: "you@email.com" },
   ],
