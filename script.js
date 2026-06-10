@@ -31,16 +31,17 @@ const PORTFOLIO_DATA = {
 
   /* ── Identity ─────────────────────────────────────────────── */
   name:        "Jynoe Sabido",
-  logoPrefix:  "your",    /* nav logo shows: [logoPrefix]name */
-  logoSuffix:  "name",
+  firstName:   "Jynoe",
+  /* Logo initials are auto-derived from name (e.g. "Your Name" → "YN")
+     You can override by adding: logoInitials: "XX"               */
   role:        "Full-Stack Developer & Designer",
-  location:    "Quezon City, Philippines",
+  location:    "Manila, Philippines",
   available:   true,       /* true = green dot + "Available" shown */
-  email:       "jynoe.sabido22@gmail.com",
+  email:       "you@email.com",
   resume:      "resume.pdf",   /* path or URL to your resume PDF */
 
   /* ── Hero ─────────────────────────────────────────────────── */
-  heroHeading: "I build for the web.",
+  heroHeading: " a product designer who engineers.",
   heroBio:     `Full-stack developer and designer based in Manila.
                 I create thoughtful digital experiences that are
                 fast, accessible, and a little beautiful.`,
@@ -64,22 +65,22 @@ const PORTFOLIO_DATA = {
   /* Each object: { years, company, role, desc } */
   experience: [
     {
-      years:   "2024 - Now",
-      company: "U-BIX Corporation",
-      role:    "UI/UX Designer",
-      desc:    "Designed responsive website layouts, wireframes, and interactive prototypes in Figma for multiple brands and business units. Built and maintained WordPress websites using Elementor with a focus on responsive, pixel-perfect implementation. Collaborated with marketing teams to create conversion-driven landing pages and digital experiences, improved website visibility through SEO optimization and Google Search Console monitoring, and ensured brand consistency across websites and digital marketing assets.",
+      years:   "2025 — Now",
+      company: "Company Name",
+      role:    "Frontend Engineer",
+      desc:    "Short description of what you do. Mention a tool or result you're proud of.",
+    },
+    {
+      years:   "2024",
+      company: "Another Company",
+      role:    "Product Design Intern",
+      desc:    "What you shipped and what you learned.",
     },
     {
       years:   "2023",
-      company: "PADES Printing",
-      role:    "Frontend Web Developer (Freelance)",
-      desc:    "Designed website layouts and user interfaces in Figma based on business requirements, and developed responsive websites using ReactJS, HTML, CSS, JavaScript, and Bootstrap. Collaborated directly with clients to enhance usability, improve user experience, and deliver solutions aligned with their goals.",
-    },
-    {
-      years:   "2022",
-      company: "VisibleTeam Solutions OPC",
-      role:    "WordPress Developer Intern",
-      desc:    "Built and maintained WordPress websites using Elementor, translating design concepts into responsive and functional web pages. Managed website content, plugins, and themes while ensuring optimal performance, reliability, and a seamless user experience.",
+      company: "Freelance",
+      role:    "Web Developer",
+      desc:    "Designed and built websites for local businesses.",
     },
   ],
 
@@ -159,8 +160,8 @@ const PORTFOLIO_DATA = {
   /* ── Social Links ─────────────────────────────────────────── */
   /* icon: any emoji. url: full URL. handle: text shown on the right */
   socials: [
-    { icon: "🐙", label: "GitHub",     url: "#", handle: "github.com/jynoes"    },
-    { icon: "💼", label: "LinkedIn",   url: "#", handle: "www.linkedin.com/in/jynoe-sabido-aab142248"},
+    { icon: "🐙", label: "GitHub",     url: "#", handle: "github.com/yourname"    },
+    { icon: "💼", label: "LinkedIn",   url: "#", handle: "linkedin.com/in/yourname"},
     { icon: "🐦", label: "X / Twitter",url: "#", handle: "@yourhandle"             },
     { icon: "✉️", label: "Email",      url: "mailto:you@email.com", handle: "you@email.com" },
   ],
@@ -528,16 +529,62 @@ function setStatus(type, message) {
 
 /**
  * renderNav
- * Sets the logo text from PORTFOLIO_DATA.
+ * Sets the logo initials from PORTFOLIO_DATA.name (first letters of each word).
+ * Also updates resume link hrefs.
  */
 function renderNav() {
+  /* Derive initials from the name — e.g. "Your Name" → "YN" */
+  const initials = PORTFOLIO_DATA.name
+    .split(' ')
+    .map(w => w[0] || '')
+    .join('')
+    .toUpperCase()
+    .slice(0, 2);
+
   const logo = document.querySelector('.nav-logo');
-  if (logo) {
-    logo.innerHTML = `<span>${PORTFOLIO_DATA.logoPrefix}</span>${PORTFOLIO_DATA.logoSuffix}`;
-  }
+  if (logo) logo.textContent = initials;
 
   const resumeLinks = document.querySelectorAll('.resume-link');
   resumeLinks.forEach(l => l.setAttribute('href', PORTFOLIO_DATA.resume));
+}
+
+/**
+ * renderHeroGrid
+ * Creates 16 grid cells (4 cols × 4 rows) inside #hero-grid-bg.
+ *
+ * WHY 4 SPANS PER CELL:
+ * CSS only gives each element two pseudo-elements (::before and ::after),
+ * so you can only draw 2 corners that way. To get all 4 corners on every
+ * cell, we inject 4 <span> children — one per corner — and style each
+ * with a different combination of border-top/right/bottom/left in CSS.
+ *
+ * Span class names:
+ *   .corner-tl  → top-left     → border-top + border-left
+ *   .corner-tr  → top-right    → border-top + border-right
+ *   .corner-bl  → bottom-left  → border-bottom + border-left
+ *   .corner-br  → bottom-right → border-bottom + border-right
+ *
+ * To change grid density: update COLS, ROWS, and the matching
+ * grid-template-columns value in style.css (#hero-grid-bg).
+ */
+function renderHeroGrid() {
+  const bg = document.getElementById('hero-grid-bg');
+  if (!bg) return;
+
+  const COLS = 6;
+  const ROWS = 6;
+  const CELL_COUNT = COLS * ROWS;
+
+  const corners = `
+    <span class="corner-tl" aria-hidden="true"></span>
+    <span class="corner-tr" aria-hidden="true"></span>
+    <span class="corner-bl" aria-hidden="true"></span>
+    <span class="corner-br" aria-hidden="true"></span>
+  `;
+
+  bg.innerHTML = Array.from({ length: CELL_COUNT })
+    .map(() => `<div class="hero-grid-cell">${corners}</div>`)
+    .join('');
 }
 
 /**
@@ -547,7 +594,7 @@ function renderNav() {
 function renderHero() {
   const heading = document.getElementById('hero-heading');
   if (heading) {
-    heading.innerHTML = `Hi, I'm <span class="gradient-text">${PORTFOLIO_DATA.name}</span>.<br>${PORTFOLIO_DATA.heroHeading}`;
+    heading.innerHTML = `I'm ${PORTFOLIO_DATA.firstName}</span>, ${PORTFOLIO_DATA.heroHeading}`;
   }
 
   const bio = document.getElementById('hero-bio');
@@ -742,7 +789,8 @@ document.addEventListener('click', e => {
 
 (function init() {
   initTheme();          /* Apply saved dark/light preference     */
-  renderNav();          /* Logo text                             */
+  renderNav();          /* Logo initials                         */
+  renderHeroGrid();     /* 4×4 background grid cells             */
   renderHero();         /* Hero heading, bio, availability       */
   renderExperience();   /* Experience list                       */
   renderProjects();     /* Project cards                         */

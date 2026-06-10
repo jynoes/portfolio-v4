@@ -49,8 +49,8 @@
 
   /* ── Brand Accent ─────────────────────────────────────────── */
   /* ★ Change --color-accent to recolor buttons, links, and highlights */
-  --color-accent:       #d8e662;             /* Indigo — main brand color  */
-  --color-accent-light: #ccce6a;             /* Lighter for hover & links  */
+  --color-accent:       #6366f1;             /* Indigo — main brand color  */
+  --color-accent-light: #818cf8;             /* Lighter for hover & links  */
   --color-accent-glow:  rgba(99,102,241,.15); /* Transparent accent for glows */
 
   /* ── Secondary Palette ────────────────────────────────────── */
@@ -258,9 +258,18 @@ p {
 
 
 /* ================================================================
-   5. NAVIGATION
+   5. NAVIGATION  — Geometric grid-cell style
+   ----------------------------------------------------------------
+   The nav is a full-width row of bordered cells.
+   Each cell has a sharp border-right. Two "hatch" cells flank
+   the logo, using a repeating diagonal SVG pattern as background.
+   The active tab gets the accent background (like "Get Started").
 ================================================================ */
 
+/* ── Nav shell ────────────────────────────────────────────────
+   No padding — the inner cells provide their own spacing.
+   Height is driven by --nav-height token.
+──────────────────────────────────────────────────────────────── */
 #nav {
   position: fixed;
   top: 0;
@@ -269,58 +278,121 @@ p {
   height: var(--nav-height);
   z-index: 100;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1.75rem;
-  background: rgba(15, 15, 17, 0.88);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  align-items: stretch;          /* cells fill the full nav height */
+  background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
   transition: background var(--transition-base), border-color var(--transition-base);
 }
 
-/* In light mode the frosted glass uses a lighter base */
-html.light #nav {
-  background: rgba(248, 248, 249, 0.88);
+html.light #nav { background: var(--color-surface); }
+
+/* ── Hatched decorative cells ─────────────────────────────────
+   The two cells that appear as diagonal stripes — one flanking
+   the logo on the left, one on the far right before Resume.
+   Built with a repeating-linear-gradient (no image needed).
+──────────────────────────────────────────────────────────────── */
+.nav-hatch {
+  width: 80px;
+  flex-shrink: 0;
+  border-right: 1px solid var(--color-border);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-border) 0px,
+    var(--color-border) 1px,
+    transparent 1px,
+    transparent 8px
+  );
+  background-color: var(--color-bg);
 }
 
-/* Logo text — uses monospace font */
+html.light .nav-hatch { background-color: var(--color-surface); }
+
+/* Last hatch cell (right side) — border on left, not right */
+.nav-hatch-right {
+  border-right: none;
+  border-left: 1px solid var(--color-border);
+}
+
+/* ── Logo cell ────────────────────────────────────────────────
+   Square-ish cell that holds the site logo / initials mark.
+──────────────────────────────────────────────────────────────── */
+.nav-logo-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.25rem;
+  border-right: 1px solid var(--color-border);
+  flex-shrink: 0;
+  min-width: 72px;
+}
+
+/* Logo mark — bold, monospace, square-icon feel */
 .nav-logo {
   font-family: var(--font-mono);
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--color-text);
   text-decoration: none;
   user-select: none;
-}
-
-.nav-logo span { color: var(--color-accent-light); }
-
-/* Right side of nav: tabs + theme toggle */
-.nav-right {
+  letter-spacing: -0.04em;
+  line-height: 1;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--color-text);
+  border-radius: 4px;
+  transition: background var(--transition-fast), color var(--transition-fast);
 }
 
-/* ── Tab list ────────────────────────────────────────────────── */
+.nav-logo:hover {
+  background: var(--color-text);
+  color: var(--color-bg);
+}
+
+/* ── Middle stretch area ──────────────────────────────────────
+   Expands to fill remaining space, holds the tab links.
+──────────────────────────────────────────────────────────────── */
+.nav-center {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  border-right: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+/* ── Tab list ─────────────────────────────────────────────────
+   Each tab is a full-height cell separated by borders.
+──────────────────────────────────────────────────────────────── */
 .nav-tabs {
   display: flex;
-  align-items: center;
-  gap: 0.15rem;
+  align-items: stretch;
+  justify-content: center;
   list-style: none;
+  width: 100%;
 }
 
+.nav-tab {
+  display: flex;
+  align-items: stretch;
+  border-right: 1px solid var(--color-border);
+}
+
+.nav-tab:first-child { border-left: 1px solid var(--color-border); }
+
 .nav-tab a {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--color-text-muted);
-  padding: 0.4rem 0.85rem;
-  border-radius: var(--radius-md);
-  border: 1px solid transparent;
-  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
   white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: background var(--transition-fast), color var(--transition-fast),
+              border-color var(--transition-fast);
 }
 
 .nav-tab a:hover {
@@ -328,41 +400,81 @@ html.light #nav {
   color: var(--color-text);
 }
 
-/* Active/current tab gets a subtle outlined look */
+/* Active tab: accent underline */
 .nav-tab a.active {
-  background: var(--color-surface);
   color: var(--color-text);
-  border-color: var(--color-border);
+  border-bottom-color: var(--color-accent);
 }
 
-/* ── Dark/Light Toggle Button ─────────────────────────────────
-   A small icon button that sits next to the tabs.
+/* ── Resume / CTA cell ────────────────────────────────────────
+   The filled accent button cell on the far right — mimics
+   the orange "Get Started" cell in the reference.
 ──────────────────────────────────────────────────────────────── */
+.nav-cta-cell {
+  display: flex;
+  align-items: stretch;
+  flex-shrink: 0;
+}
+
+.nav-cta-cell a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: var(--color-accent);
+  color: #fff;
+  white-space: nowrap;
+  transition: background var(--transition-fast);
+  border: none;
+}
+
+.nav-cta-cell a:hover {
+  background: var(--color-accent-light);
+  color: #fff;
+}
+
+/* ── Theme toggle cell ────────────────────────────────────────
+   Small square cell holding the dark/light icon.
+──────────────────────────────────────────────────────────────── */
+.nav-theme-cell {
+  display: flex;
+  align-items: stretch;
+  border-left: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
 #theme-toggle {
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
+  width: 56px;
   background: transparent;
+  border: none;
   color: var(--color-text-muted);
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1rem;
-  transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
-  flex-shrink: 0;
+  transition: background var(--transition-fast), color var(--transition-fast);
 }
 
 #theme-toggle:hover {
   background: var(--color-surface-alt);
   color: var(--color-text);
-  border-color: var(--color-border-glow);
 }
 
-/* ── Mobile Hamburger ─────────────────────────────────────────── */
-#hamburger {
+/* ── Mobile Hamburger cell ────────────────────────────────────── */
+.nav-hamburger-cell {
   display: none;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid var(--color-border);
+  flex-shrink: 0;
+  padding: 0 1rem;
+}
+
+#hamburger {
+  display: flex;
   flex-direction: column;
   gap: 5px;
   background: none;
@@ -389,10 +501,8 @@ html.light #nav {
   right: 0;
   background: var(--color-surface);
   border-bottom: 1px solid var(--color-border);
-  padding: 1rem 1.5rem;
   z-index: 99;
   flex-direction: column;
-  gap: 0.25rem;
 }
 
 #mobile-menu.open { display: flex; }
@@ -401,13 +511,16 @@ html.light #nav {
   font-size: 1rem;
   font-weight: 500;
   color: var(--color-text-muted);
-  padding: 0.6rem 0;
+  padding: 0.85rem 1.5rem;
   border-bottom: 1px solid var(--color-border);
-  transition: color var(--transition-fast);
+  transition: color var(--transition-fast), background var(--transition-fast);
 }
 
 #mobile-menu a:last-child { border-bottom: none; }
-#mobile-menu a:hover { color: var(--color-text); }
+#mobile-menu a:hover {
+  color: var(--color-text);
+  background: var(--color-surface-alt);
+}
 
 
 /* ================================================================
@@ -425,66 +538,195 @@ html.light #nav {
 
 
 /* ================================================================
-   7. HERO SECTION
+   7. HERO SECTION — Geometric grid-background style
+   ----------------------------------------------------------------
+   The hero fills the viewport with a CSS grid of equal cells.
+   Each cell has a visible border, and corner "bracket" markers
+   are drawn with ::before / ::after pseudo-elements via JS-added
+   wrapper divs. The heading is bold and full-width, centred.
 ================================================================ */
 
 #hero {
+  position: relative;
   min-height: calc(100vh - var(--nav-height));
   display: flex;
   align-items: center;
-  position: relative;
+  justify-content: center;
   overflow: hidden;
+  /* No padding — the grid and content handle spacing */
 }
 
-/* Dot-grid background texture */
-#hero::before {
-  content: '';
+/* ── Full-bleed grid background ───────────────────────────────
+   A 4 × N grid of cells that tiles the entire hero area.
+   Drawn with a CSS background pattern (no extra DOM nodes).
+──────────────────────────────────────────────────────────────── */
+#hero-grid-bg {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(var(--color-border) 1px, transparent 1px);
-  background-size: 28px 28px;
-  opacity: 0.5;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   pointer-events: none;
+  z-index: 0;
+  padding: 20px;
+  gap: 20px;
+  row-gap: 20px;
+  opacity: 0.7;
 }
 
-/* Ambient glow orb behind hero text */
-#hero::after {
-  content: '';
-  position: absolute;
-  top: -200px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, var(--color-accent-glow) 0%, transparent 70%);
-  pointer-events: none;
-}
-
-.hero-content {
+/* Each grid cell */
+.hero-grid-cell {
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  border-top: 1px solid var(--color-border);
   position: relative;
+}
+
+/* Left edge of each row — border on the left */
+.hero-grid-cell:nth-child(4n+1) {
+  border-left: 1px solid var(--color-border);
+}
+
+/* Top row — border on top */
+.hero-grid-cell:nth-child(-n+4) {
+  border-top: 1px solid var(--color-border);
+}
+
+/* ── Corner bracket markers ───────────────────────────────────
+   Each cell has 4 <span> children (injected by renderHeroGrid).
+   Every span is the same size and positioned absolutely at its
+   corner. Only 2 of its 4 possible borders are drawn, forming
+   an L-shaped bracket. The border-width shorthand controls which
+   sides are visible:
+     border-width: top right bottom left
+     0 = invisible, var(--bracket-w) = visible
+──────────────────────────────────────────────────────────────── */
+.hero-grid-cell {
+  position: relative;    /* needed so corner spans position against the cell */
+}
+
+/* Shared styles for all 4 corner spans */
+.hero-grid-cell .corner-tl,
+.hero-grid-cell .corner-tr,
+.hero-grid-cell .corner-bl,
+.hero-grid-cell .corner-br {
+  position: absolute;
+  width: 10px;          /* ★ EDIT: bracket arm length */
+  height: 10px;         /* ★ EDIT: bracket arm length */
+  border-style: solid;
+  border-color: var(--color-border-glow);
+  border-width: 0;      /* start with no borders, each class enables its two sides */
+}
+
+/* Top-left: show top edge + left edge */
+.hero-grid-cell .corner-tl {
+  top: -1px;
+  left: -1px;
+  border-top-width: 1.5px;    /* ★ EDIT: bracket thickness */
+  border-left-width: 1.5px;
+}
+
+/* Top-right: show top edge + right edge */
+.hero-grid-cell .corner-tr {
+  top: -1px;
+  right: -1px;
+  border-top-width: 1.5px;
+  border-right-width: 1.5px;
+}
+
+/* Bottom-left: show bottom edge + left edge */
+.hero-grid-cell .corner-bl {
+  bottom: -1px;
+  left: -1px;
+  border-bottom-width: 1.5px;
+  border-left-width: 1.5px;
+}
+
+/* Bottom-right: show bottom edge + right edge */
+.hero-grid-cell .corner-br {
+  bottom: -1px;
+  right: -1px;
+  border-bottom-width: 1.5px;
+  border-right-width: 1.5px;
+}
+
+/* ── Ambient glow in the centre ───────────────────────────────
+   Soft radial gradient layered above the grid.
+──────────────────────────────────────────────────────────────── */
+#hero-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 55% 50% at 50% 50%,
+    var(--color-bg)         0%,    /* fully opaque at centre — hides the grid */
+    var(--color-bg)        40%,    /* stays solid behind the text block       */
+    transparent           100%    /* fades out so side grid cells show        */
+  );
+  pointer-events: none;
   z-index: 1;
 }
 
-/* "Available for opportunities" eyebrow line */
+/* ── Hero content — sits above grid + glow ────────────────────── */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 5rem 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ── Availability eyebrow ─────────────────────────────────────
+   Small pill above the heading — status dot + tagline text.
+──────────────────────────────────────────────────────────────── */
 .hero-eyebrow {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.hero-tagline {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
+  gap: 0.6rem;
+  margin-bottom: 1.75rem;
+  padding: 0.35rem 1rem 0.35rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  background: var(--color-surface);
   font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
-/* CTA button row below the hero text */
+.hero-tagline { color: var(--color-text-muted); }
+
+/* ── Hero heading ─────────────────────────────────────────────
+   Very large, heavy, tight tracking — mimics the bold display
+   heading in the reference image.
+──────────────────────────────────────────────────────────────── */
+#hero-heading {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  color: var(--color-text);
+  margin-bottom: 1.25rem;
+}
+
+/* ── Hero bio ─────────────────────────────────────────────────── */
+#hero-bio {
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ── CTA row ──────────────────────────────────────────────────── */
 .hero-cta-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2.5rem;
+  gap: 0.75rem;
+  justify-content: center;
 }
 
 
@@ -1012,15 +1254,28 @@ footer span { color: var(--color-accent-light); }
 @media (max-width: 640px) {
   :root { --section-pad: 3rem; }
 
-  .nav-tabs  { display: none; }
-  #hamburger { display: flex; }
+  /* Hide desktop tabs and hatches, show hamburger */
+  .nav-tabs        { display: none; }
+  .nav-center      { display: none; }
+  .nav-hatch       { display: none; }
+  .nav-cta-cell    { display: none; }
+  .nav-theme-cell  { border-left: 1px solid var(--color-border); }
+  .nav-hamburger-cell { display: flex; }
+
+  /* Logo cell fills remaining space */
+  .nav-logo-cell   { flex: 1; justify-content: flex-start; padding: 0 1rem; }
 
   .exp-item  { grid-template-columns: 1fr; gap: 0.25rem; }
 
-  .project-grid {
-    grid-template-columns: 1fr;
+  .project-grid { grid-template-columns: 1fr; }
+
+  /* Hero grid: fewer columns on mobile */
+  #hero-grid-bg {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .hero-cta-row { flex-direction: column; }
-  .btn          { justify-content: center; }
+  #hero-heading { font-size: clamp(2rem, 10vw, 3rem); }
+
+  .hero-cta-row { flex-direction: column; align-items: center; }
+  .btn          { justify-content: center; width: 100%; max-width: 280px; }
 }
