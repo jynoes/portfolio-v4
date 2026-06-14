@@ -38,13 +38,11 @@ const PORTFOLIO_DATA = {
   location:    "Manila, Philippines",
   available:   true,       /* true = green dot + "Available" shown */
   email:       "you@email.com",
-  resume:      "resume.pdf",   /* path or URL to your resume PDF */
+  resume:      "/documents/Sabido - CV.pdf",   /* path or URL to your resume PDF */
 
   /* ── Hero ─────────────────────────────────────────────────── */
-  heroHeading: " a product designer who engineers.",
-  heroBio:     `Full-stack developer and designer based in Manila.
-                I create thoughtful digital experiences that are
-                fast, accessible, and a little beautiful.`,
+  heroHeading: " crafting products from idea to launch.",
+  heroBio:     `UI/UX designer and WordPress developer with a passion for turning ideas into meaningful digital experiences. I blend user-centered design, modern web development, and attention to detail to create websites that not only look great but also deliver real business value.`,
 
   /* ── About ────────────────────────────────────────────────── */
   /* photo: path to your image file, or leave empty string "" for emoji */
@@ -65,22 +63,22 @@ const PORTFOLIO_DATA = {
   /* Each object: { years, company, role, desc } */
   experience: [
     {
-      years:   "2025 — Now",
-      company: "Company Name",
-      role:    "Frontend Engineer",
-      desc:    "Short description of what you do. Mention a tool or result you're proud of.",
-    },
-    {
-      years:   "2024",
-      company: "Another Company",
-      role:    "Product Design Intern",
-      desc:    "What you shipped and what you learned.",
+      years:   "2024 — Present",
+      company: "U-BIX Corporation",
+      role:    "UI/UX Designer",
+      desc:    "I design user-friendly interfaces in Figma with consistent branding across corporate affiliates. I build and optimize Wix and WordPress websites using Elementor, focusing on responsiveness, speed, and performance. I also use AI tools to improve workflows, manage SEO through Google Search Console, and create social media content across Facebook, Instagram, and LinkedIn to boost engagement and brand presence.",
     },
     {
       years:   "2023",
-      company: "Freelance",
-      role:    "Web Developer",
-      desc:    "Designed and built websites for local businesses.",
+      company: "PADES Printing",
+      role:    "Frontend Web Developer",
+      desc:    "Built a responsive business website using ReactJS, Bootstrap, HTML, CSS, and JavaScript, improving usability and overall user experience. Designed user-friendly interfaces in Figma and managed projects using Jira and Slack, ensuring smooth collaboration, efficient workflows, and on-time delivery within an agile environment.",
+    },
+    {
+      years:   "2022",
+      company: "VisibleTeam Solutions OPC",
+      role:    "WordPress Developer Intern",
+      desc:    "Designed and maintained user-friendly web pages using Elementor and WordPress, ensuring strong visuals, smooth functionality, and consistent site performance. Coordinated with teams through online collaboration tools to manage multiple websites, align design with technical requirements, and deliver projects efficiently and on schedule.",
     },
   ],
 
@@ -91,11 +89,11 @@ const PORTFOLIO_DATA = {
   projects: [
     {
       id:             "proj1",
-      title:          "Project Alpha",
-      emoji:          "🚀",
-      thumbGradient:  "linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)",
-      tags:           ["React", "TypeScript", "Tailwind"],
-      summary:        "A short punchy description for the card.",
+      title:          "Duck Donuts Philippines",
+      image:          "/images/Duck Donuts Preview.png",
+      imageAlt:       "Duck Donuts Website Preview",
+      tags:           ["WordPress", "Elementor", "Figma", "Hostinger"],
+      summary:        "Designed, developed, and shipped under 3 weeks! #EASY",
       detail:         `This is the full description shown in the project modal.
                        Explain what the project does, why you built it,
                        what technologies you used, and what you learned or achieved.
@@ -649,9 +647,16 @@ function renderProjects() {
     .map(p => `
       <div class="project-card fade-in" onclick="openProject('${p.id}')" role="button" tabindex="0"
            aria-label="Open project: ${p.title}">
-        <div class="project-thumb" style="background: ${p.thumbGradient}">
-          ${p.emoji}
+
+        <div class="project-thumb">
+          <img
+            src="${p.image}"
+            alt="${p.imageAlt}"
+            loading="lazy"
+            onerror="this.style.display='none'"
+          />
         </div>
+
         <div class="project-body">
           <h3>${p.title}</h3>
           <p style="font-size:.85rem; margin-top:.4rem;">${p.summary}</p>
