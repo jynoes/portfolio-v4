@@ -256,7 +256,7 @@ function updateToggleIcon() {
   const btn = document.getElementById('theme-toggle');
   if (!btn) return;
   const isLight = document.documentElement.classList.contains('light');
-  btn.textContent    = isLight ? '🌙' : '☀️';
+  btn.textContent    = isLight ? '☾' : '☀';
   btn.title          = isLight ? 'Switch to dark mode' : 'Switch to light mode';
   btn.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
 }
