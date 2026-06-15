@@ -144,7 +144,7 @@ const PORTFOLIO_DATA = {
       summary:        "A website for a rural bank in Dumaguete, Philippines.",
       detail:         ``,
       links: [
-        { label: "GitHub →", url: "#" },
+        { label: "Live Site →", url: "https://sgbankph.com/" },
       ],
     },
   ],
@@ -164,9 +164,9 @@ const PORTFOLIO_DATA = {
   /* icon: any emoji. url: full URL. handle: text shown on the right */
   socials: [
     { icon: "🐙", label: "GitHub",     url: "#", handle: "github.com/yourname"    },
-    { icon: "💼", label: "LinkedIn",   url: "#", handle: "linkedin.com/in/yourname"},
+    { icon: "💼", label: "LinkedIn",   url: "#", handle: "linkedin.com/in/jynoe-sabido-aab142248"},
     { icon: "🐦", label: "X / Twitter",url: "#", handle: "@yourhandle"             },
-    { icon: "✉️", label: "Email",      url: "mailto:you@email.com", handle: "you@email.com" },
+    { icon: "✉️", label: "Email",      url: "mailto:jynoe.sabido22@gmail.com", handle: "jynoe.sabido22@gmail.com" },
   ],
 
   /* ── Contact Form ─────────────────────────────────────────── */
