@@ -8,9 +8,12 @@
        SEO & Social Sharing Meta Tags
        ★ EDIT: Replace with your real name and description
   ============================================================ -->
-  <title>Jynoe Sabido | Portfolio</title>
+  <title>Jynoe Sabido | UI/UX Designer</title>
   <meta name="description" content="Jynoe Sabido — Designer/Developer" />
   <meta name="author" content="Jynoe Sabido" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/images/Portfolio Favicon PNG.png" />
 
   <!-- Open Graph (for link previews on Facebook, LinkedIn, etc.) -->
   <meta property="og:title"       content="Jynoe | Portfolio" />
@@ -117,7 +120,8 @@
       <button class="modal-close" aria-label="Close modal">✕</button>
 
       <!-- Coloured thumbnail (background + emoji set by JS) -->
-      <div class="modal-hero"></div>
+      <div class="modal-hero">
+      </div>
 
       <div class="modal-body">
         <!-- Tags row -->
@@ -268,7 +272,7 @@
 
         <div class="label fade-in">Contact</div>
         <h2 class="fade-in" style="margin-bottom: 0.5rem;">Let's talk.</h2>
-        <p class="fade-in" style="margin-bottom: 2.5rem; max-width: 480px;">
+        <p class="fade-in" style="margin-bottom: 2.5rem; max-width: 100%;">
           I'm always up for interesting conversations. Use the form or any link below.
         </p>
 
@@ -282,7 +286,7 @@
               <input
                 id="cf-name"
                 type="text"
-                placeholder="Your name"
+                placeholder="What should I call you?"
                 autocomplete="name"
               />
             </div>
@@ -292,7 +296,7 @@
               <input
                 id="cf-email"
                 type="email"
-                placeholder="you@email.com"
+                placeholder="Where can I reach you?"
                 autocomplete="email"
               />
             </div>
@@ -301,7 +305,7 @@
               <label for="cf-message">Message</label>
               <textarea
                 id="cf-message"
-                placeholder="What's on your mind?"
+                placeholder="What’s on your mind? Let’s build something great!"
               ></textarea>
             </div>
 
@@ -321,7 +325,7 @@
 
           <!-- ── Social Links ───────────────────────────── -->
           <div>
-            <p style="font-size: 0.85rem; margin-bottom: 1rem;">Or find me here</p>
+            <p style="font-size: 0.85rem; margin-bottom: 1rem;">OR FIND ME HERE</p>
 
             <!-- Links injected by renderContact() in script.js -->
             <div class="social-links" id="social-list"></div>

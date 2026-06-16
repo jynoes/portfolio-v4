@@ -42,7 +42,7 @@ const PORTFOLIO_DATA = {
 
   /* ── Hero ─────────────────────────────────────────────────── */
   heroHeading: " crafting products from idea to launch.",
-  heroBio:     `UI/UX designer and WordPress developer with a passion for turning ideas into meaningful digital experiences. I blend user-centered design, modern web development, and attention to detail to create websites that not only look great but also deliver real business value.`,
+  heroBio:     `UI/UX Designer and WordPress Developer with a passion for turning ideas into meaningful digital experiences. I blend user-centered design, modern web development, and attention to detail to create websites that not only look great but also deliver real business value.`,
 
   /* ── About ────────────────────────────────────────────────── */
   /* photo: path to your image file, or leave empty string "" for emoji */
@@ -90,11 +90,12 @@ const PORTFOLIO_DATA = {
     {
       id:             "proj1",
       title:          "Duck Donuts Philippines",
+      thumbGradient:  "linear-gradient(#ff5e62, #ff9966)",
       image:          "/images/Duck Donuts Preview.png",
       imageAlt:       "Duck Donuts Website Preview",
       tags:           ["WordPress", "Elementor", "Figma", "Hostinger"],
       summary:        "Designed, developed, and shipped under 3 weeks! #EASY",
-      detail:         ``,
+      detail:         `Designed and maintained the official Duck Donuts Philippines website, creating a responsive and user-friendly experience that reflects the brand's fun, customizable donut offerings while ensuring consistency across all devices.`,
       links: [
         { label: "Live Site →",  url: "https://duckdonutsph.com/" },
       ],
@@ -106,7 +107,7 @@ const PORTFOLIO_DATA = {
       imageAlt:       "Pivo Praha Philippines Website Preview",
       tags:           ["Figma", "WordPress", "Elementor", "Hostinger"],
       summary:        "A website for a must-try beer brewery in Poblacion, Makati.",
-      detail:         ``,
+      detail:         `Designed and developed Pivo Praha's website, crafting a responsive digital experience that showcases authentic Czech-style craft beers, highlights the brand's heritage, and strengthens its presence in the Philippine craft beer market.`,
       links: [
         { label: "Live Site →", url: "https://pivoprahaph.com/" },
       ],
@@ -118,7 +119,7 @@ const PORTFOLIO_DATA = {
       imageAlt:       "Animated Portfolio Preview",
       tags:           ["HTML", "CSS", "JavaScript", "Github", "Microsoft Paint"],
       summary:        "Animating and coding in one project? Gotta do that!",
-      detail:         `A fun project using basic HTML, CSS and JavaScript. YouTube made me do it. `,
+      detail:         `YouTube made me do it. A browser-based project developed using vanilla HTML, CSS, and JavaScript, showcasing interactive functionality, dynamic user interactions, and fundamental front-end development skills. `,
       links: [
         { label: "Live Site →", url: "https://funny-stardust-8d9344.netlify.app/" },
       ],
@@ -130,9 +131,9 @@ const PORTFOLIO_DATA = {
       imageAlt:       "Animated Portfolio Preview",
       tags:           ["Figma", "Design Thinking", "User Research", "UI/UX"],
       summary:        "A case study for a job application. Click to know what happened.",
-      detail:         ``,
+      detail:         `A conceptual solution reimagining digital healthcare management. Built as a design assessment, this project focuses on simplifying complex health-related information into an intuitive, accessible, and business-driven mobile interface.`,
       links: [
-        { label: "GitHub →", url: "#" },
+        { label: "Figma →", url: "#" },
       ],
     },
     {
@@ -142,7 +143,7 @@ const PORTFOLIO_DATA = {
       imageAlt:       "Animated Portfolio Preview",
       tags:           ["Figma", "WordPress", "Elementor", "Hostinger"],
       summary:        "A website for a rural bank in Dumaguete, Philippines.",
-      detail:         ``,
+      detail:         `Designed and maintained SG Bank's website, delivering a responsive and accessible user experience that promotes financial products, strengthens brand credibility, and supports customer engagement.`,
       links: [
         { label: "Live Site →", url: "https://sgbankph.com/" },
       ],
@@ -163,9 +164,9 @@ const PORTFOLIO_DATA = {
   /* ── Social Links ─────────────────────────────────────────── */
   /* icon: any emoji. url: full URL. handle: text shown on the right */
   socials: [
-    { icon: "🐙", label: "GitHub",     url: "#", handle: "github.com/yourname"    },
-    { icon: "💼", label: "LinkedIn",   url: "#", handle: "linkedin.com/in/jynoe-sabido-aab142248"},
-    { icon: "🐦", label: "X / Twitter",url: "#", handle: "@yourhandle"             },
+    { icon: "🐙", label: "GitHub",     url: "https://github.com/jynoes", handle: "jynoes"    },
+    { icon: "💼", label: "LinkedIn",   url: "https://www.linkedin.com/in/jynoe-sabido-aab142248/", handle: "Jynoe Sabido"},
+    { icon: "🐦", label: "Tiktok",     url: "#", handle: "@yourhandle"             },
     { icon: "✉️", label: "Email",      url: "mailto:jynoe.sabido22@gmail.com", handle: "jynoe.sabido22@gmail.com" },
   ],
 
@@ -380,8 +381,7 @@ function openProject(projectId) {
 
   /* Thumbnail hero */
   const hero = modal.querySelector('.modal-hero');
-  hero.style.background = project.thumbGradient;
-  hero.textContent       = project.emoji;
+  hero.image = project.image;
 
   /* Title */
   modal.querySelector('.modal-title').textContent = project.title;

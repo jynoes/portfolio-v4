@@ -49,9 +49,9 @@
 
   /* ── Brand Accent ─────────────────────────────────────────── */
   /* ★ Change --color-accent to recolor buttons, links, and highlights */
-  --color-accent:       #6366f1;             /* Indigo — main brand color  */
-  --color-accent-light: #818cf8;             /* Lighter for hover & links  */
-  --color-accent-glow:  rgba(99,102,241,.15); /* Transparent accent for glows */
+  --color-accent:       #2c965b;             /* Indigo — main brand color  */
+  --color-accent-light: #c2ebd4;             /* Lighter for hover & links  */
+  --color-accent-glow:  rgba(116, 211, 137, 0.459); /* Transparent accent for glows */
 
   /* ── Secondary Palette ────────────────────────────────────── */
   --color-teal:         #14b8a6;   /* Used on skill bars, secondary accents */
@@ -97,9 +97,9 @@ html.light {
   --color-text-muted:   #52525b;
   --color-text-faint:   #a1a1aa;
 
-  --color-accent:       #4f46e5;
-  --color-accent-light: #6366f1;
-  --color-accent-glow:  rgba(79,70,229,.1);
+  --color-accent:       #2c965b;
+  --color-accent-light: #417a5a;
+  --color-accent-glow:  rgba(95, 175, 95, 0.1);
 }
 
 
@@ -936,6 +936,16 @@ html.light .modal-overlay { background: rgba(0, 0, 0, 0.45); }
   justify-content: center;
   font-size: 4rem;
   border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.modal-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       /* crops to fill — change to "contain" to letterbox */
+  object-position: top;    /* ★ EDIT: "top" shows the top of the screenshot,   */
+                           /*  "center" centres it, "bottom" shows the footer   */
+  display: block;
+  transition: transform 0.4s ease;
 }
 
 .modal-body { padding: 1.75rem 2rem 2rem; }
