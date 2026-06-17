@@ -38,7 +38,7 @@ const PORTFOLIO_DATA = {
   location:    "Manila, Philippines",
   available:   true,       /* true = green dot + "Available" shown */
   email:       "you@email.com",
-  resume:      "documents/Sabido - CV.pdf",   /* path or URL to your resume PDF */
+  resume:      "/documents/Sabido - CV.pdf",   /* path or URL to your resume PDF */
 
   /* ── Hero ─────────────────────────────────────────────────── */
   heroHeading: " crafting products from idea to launch.",
