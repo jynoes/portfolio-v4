@@ -164,16 +164,15 @@ const PORTFOLIO_DATA = {
   /* ── Social Links ─────────────────────────────────────────── */
   /* icon: any emoji. url: full URL. handle: text shown on the right */
   socials: [
-    { icon: "🐙", label: "GitHub",     url: "https://github.com/jynoes", handle: "jynoes"    },
+    { icon: "🐙", label: "GitHub",     url: "https://github.com/jynoes", handle: "/jynoes"    },
     { icon: "💼", label: "LinkedIn",   url: "https://www.linkedin.com/in/jynoe-sabido-aab142248/", handle: "Jynoe Sabido"},
-    { icon: "🐦", label: "Tiktok",     url: "#", handle: "@yourhandle"             },
     { icon: "✉️", label: "Email",      url: "mailto:jynoe.sabido22@gmail.com", handle: "jynoe.sabido22@gmail.com" },
   ],
 
   /* ── Contact Form ─────────────────────────────────────────── */
   /* formAction: your Formspree endpoint (see README / launch guide)
      Leave as "#" until you've set up Formspree.               */
-  formAction: "#",
+  formAction: "https://formspree.io/f/mdavvone",
 };
 
 
@@ -381,7 +380,12 @@ function openProject(projectId) {
 
   /* Thumbnail hero */
   const hero = modal.querySelector('.modal-hero');
-  hero.image = project.image;
+  if (project.image) {
+    hero.innerHTML = `<img src="${project.image}" alt="${project.imageAlt || project.title}" />`;
+  } else {
+    hero.innerHTML = '';
+    hero.style.background = project.thumbGradient || 'var(--color-surface-alt)';
+  }
 
   /* Title */
   modal.querySelector('.modal-title').textContent = project.title;
