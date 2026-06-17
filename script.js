@@ -50,7 +50,7 @@ const PORTFOLIO_DATA = {
   photoEmoji:  "🧑‍💻",
   aboutHeading: "A little about me.",
   aboutParagraphs: [
-    `I'm a developer and designer based in <strong>Manila, Philippines</strong>.
+    `I'm a developer and designer based in <strong>Metro Manila, Philippines</strong>.
      I got into tech because I love turning ideas into things people can actually use.`,
     `When I'm not building, I'm usually reading, learning something new,
      or hunting for good coffee. I care a lot about craft — clean code
