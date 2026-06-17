@@ -91,7 +91,7 @@ const PORTFOLIO_DATA = {
       id:             "proj1",
       title:          "Duck Donuts Philippines",
       thumbGradient:  "linear-gradient(#ff5e62, #ff9966)",
-      image:          "/images/Duck Donuts Preview.png",
+      image:          "images/Duck Donuts Preview.png",
       imageAlt:       "Duck Donuts Website Preview",
       tags:           ["WordPress", "Elementor", "Figma", "Hostinger"],
       summary:        "Designed, developed, and shipped under 3 weeks! #EASY",
@@ -103,7 +103,7 @@ const PORTFOLIO_DATA = {
     {
       id:             "proj2",
       title:          "Pivo Praha Philippines",
-      image:          "/images/Pivo Praha Philippines Preview.png",
+      image:          "images/Pivo Praha Philippines Preview.png",
       imageAlt:       "Pivo Praha Philippines Website Preview",
       tags:           ["Figma", "WordPress", "Elementor", "Hostinger"],
       summary:        "A website for a must-try beer brewery in Poblacion, Makati.",
@@ -115,7 +115,7 @@ const PORTFOLIO_DATA = {
     {
       id:             "proj3",
       title:          "Animated Portfolio",
-      image:          "/images/Animated Portfolio Preview.png",
+      image:          "images/Animated Portfolio Preview.png",
       imageAlt:       "Animated Portfolio Preview",
       tags:           ["HTML", "CSS", "JavaScript", "Github", "Microsoft Paint"],
       summary:        "Animating and coding in one project? Gotta do that!",
@@ -127,7 +127,7 @@ const PORTFOLIO_DATA = {
     {
       id:             "proj4",
       title:          "Maxicare Mobile Application Case Study",
-      image:          "/images/Maxicare App Case Study .png",
+      image:          "images/Maxicare App Case Study .png",
       imageAlt:       "Animated Portfolio Preview",
       tags:           ["Figma", "Design Thinking", "User Research", "UI/UX"],
       summary:        "A case study for a job application. Click to know what happened.",
@@ -139,7 +139,7 @@ const PORTFOLIO_DATA = {
     {
       id:             "proj5",
       title:          "SG Bank Dumaguete",
-      image:          "/images/SG Bank Website Preview.png",
+      image:          "images/SG Bank Website Preview.png",
       imageAlt:       "Animated Portfolio Preview",
       tags:           ["Figma", "WordPress", "Elementor", "Hostinger"],
       summary:        "A website for a rural bank in Dumaguete, Philippines.",
