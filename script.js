@@ -153,12 +153,15 @@ const PORTFOLIO_DATA = {
   /* ── Skills ───────────────────────────────────────────────── */
   /* level: 0–100. Controls the width of the progress bar. */
   skills: [
-    { name: "JavaScript / TypeScript", level: 90 },
-    { name: "React / Next.js",         level: 85 },
-    { name: "Node.js / Express",        level: 80 },
-    { name: "UI/UX Design",             level: 75 },
-    { name: "Python",                   level: 70 },
-    { name: "Databases (SQL/NoSQL)",    level: 65 },
+    { icon: "fa-brands fa-square-js", name: "JavaScript", level: 0 },
+    { icon: "fa-brands fa-typescript", name: "TypeScript", level: 0 },
+    { icon: "fa-brands fa-react", name: "React",         level: 0 },
+    { icon: "fa-brands fa-github", name: "Next.js",         level: 0 },
+    { icon: "fa-brands fa-github", name: "Node.js",        level: 0 },
+    { icon: "fa-brands fa-github", name: "Express",         level: 0 },
+    { icon: "fa-brands fa-github", name: "UI/UX Design",             level: 0 },
+    { icon: "fa-brands fa-github", name: "Python",                   level: 0 },
+    { icon: "fa-brands fa-github", name: "Databases (SQL/NoSQL)",    level: 0 },
   ],
 
   /* ── Social Links ─────────────────────────────────────────── */
@@ -721,10 +724,8 @@ function renderSkills() {
   grid.innerHTML = PORTFOLIO_DATA.skills
     .map(s => `
       <div class="skill-card" data-level="${s.level}">
+        <div><i class="${s.icon}"></i></div>
         <div class="skill-name">${s.name}</div>
-        <div class="skill-bar-bg">
-          <div class="skill-bar-fill"></div>
-        </div>
       </div>
     `)
     .join('');
