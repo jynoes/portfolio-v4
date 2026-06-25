@@ -164,9 +164,9 @@ const PORTFOLIO_DATA = {
   /* ── Social Links ─────────────────────────────────────────── */
   /* icon: any emoji. url: full URL. handle: text shown on the right */
   socials: [
-    { icon: "🐙", label: "GitHub",     url: "https://github.com/jynoes", handle: "/jynoes"    },
-    { icon: "💼", label: "LinkedIn",   url: "https://www.linkedin.com/in/jynoe-sabido-aab142248/", handle: "Jynoe Sabido"},
-    { icon: "✉️", label: "Email",      url: "mailto:jynoe.sabido22@gmail.com", handle: "jynoe.sabido22@gmail.com" },
+    { icon: "fa-brands fa-github", label: "GitHub",     url: "https://github.com/jynoes", handle: "/jynoes"    },
+    { icon: "fa-brands fa-linkedin", label: "LinkedIn",   url: "https://www.linkedin.com/in/jynoe-sabido-aab142248/", handle: "Jynoe Sabido"},
+    { icon: "fa-solid fa-envelope", label: "Email",      url: "mailto:jynoe.sabido22@gmail.com", handle: "jynoe.sabido22@gmail.com" },
   ],
 
   /* ── Contact Form ─────────────────────────────────────────── */
@@ -741,7 +741,7 @@ function renderContact() {
   list.innerHTML = PORTFOLIO_DATA.socials
     .map(s => `
       <a href="${s.url}" target="_blank" rel="noopener" class="social-link">
-        <span>${s.icon}</span>
+        <i class="${s.icon}"></i>
         <span>${s.label}</span>
         <span class="social-handle">${s.handle}</span>
       </a>
