@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -38,11 +39,24 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 />
 
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CN0RKDWFS9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+      /* send_page_view: false — this is a single-page app, so we send
+       page_view events manually in script.js whenever the tab changes */
+  gtag('config', 'G-CN0RKDWFS9', { send_page_view: false });
+</script>
+
   <!-- ============================================================
        STYLESHEET — all design, layout, and colors
   ============================================================ -->
   <link rel="stylesheet" href="style.css" />
 </head>
+
+
 
 <body>
 

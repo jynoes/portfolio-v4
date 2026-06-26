@@ -178,6 +178,23 @@ const PORTFOLIO_DATA = {
   formAction: "https://formspree.io/f/mdavvone",
 };
 
+/* ================================================================
+   1b. ANALYTICS (Google Analytics 4)
+   ----------------------------------------------------------------
+   trackEvent() safely sends a GA4 event. Safe to call even if
+   gtag.js hasn't loaded yet (e.g. ad-blocker) — it just no-ops.
+================================================================ */
+
+/**
+ * trackEvent
+ * @param {string} eventName - e.g. 'page_view', 'select_content'
+ * @param {object} params - extra event parameters GA4 will log
+ */
+function trackEvent(eventName, params = {}) {
+  if (typeof gtag === 'function') {
+    gtag('event', eventName, params);
+  }
+}
 
 /* ================================================================
    2. TAB ROUTING
@@ -205,6 +222,13 @@ function showPage(pageId) {
   /* Highlight the matching nav tab */
   document.querySelectorAll('[data-page]').forEach(link => {
     link.classList.toggle('active', link.dataset.page === pageId);
+  });
+
+   /* Track this as a page view in GA4 (SPA tabs don't reload the URL,
+     so GA4 won't see this automatically — we send it ourselves) */
+  trackEvent('page_view', {
+    page_title:    pageId,
+    page_location: window.location.href.split('#')[0] + '#' + pageId,
   });
 
   /* Re-run scroll observer so newly visible elements can animate in */
@@ -379,6 +403,13 @@ function openProject(projectId) {
   const project = PORTFOLIO_DATA.projects.find(p => p.id === projectId);
   if (!project || !modal) return;
 
+  /* Track which project was opened */
+  trackEvent('select_content', {
+    content_type: 'project',
+    item_id:      project.id,
+    item_name:    project.title,
+  });
+
   /* ── Inject content into modal ──────────────────────────── */
 
   /* Thumbnail hero */
@@ -486,6 +517,7 @@ async function submitContact() {
   /* If no real endpoint is set, show a helpful placeholder */
   if (!endpoint || endpoint === '#') {
     setStatus('success', '✓ (Demo mode) Connect Formspree to send real messages.');
+    trackEvent('generate_lead', { method: 'contact_form_demo' });
     return;
   }
 
@@ -502,6 +534,7 @@ async function submitContact() {
 
     if (res.ok) {
       setStatus('success', '✓ Message sent! I\'ll get back to you soon.');
+      trackEvent('generate_lead', { method: 'contact_form' });
       nameEl.value    = '';
       emailEl.value   = '';
       messageEl.value = '';
@@ -794,6 +827,26 @@ document.addEventListener('click', e => {
     !hamburgerBtn.contains(e.target)
   ) {
     closeMobileMenu();
+  }
+});
+
+/* ── Track resume clicks (event delegation — links are rendered
+   dynamically and there are 2 copies: desktop nav + mobile menu) ── */
+document.addEventListener('click', e => {
+  const resumeLink = e.target.closest('.resume-link');
+  if (resumeLink) {
+    trackEvent('file_download', { file_name: 'resume', link_url: resumeLink.href });
+  }
+});
+
+/* ── Track social link clicks ────────────────────────────────── */
+document.addEventListener('click', e => {
+  const socialLink = e.target.closest('[data-track-social]');
+  if (socialLink) {
+    trackEvent('social_click', {
+      social_network: socialLink.dataset.trackSocial,
+      link_url:       socialLink.href,
+    });
   }
 });
 
