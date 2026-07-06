@@ -154,7 +154,6 @@ const PORTFOLIO_DATA = {
   /* level: 0–100. Controls the width of the progress bar. */
   skills: [
     { icon: "fa-brands fa-square-js", name: "JavaScript", level: 0 },
-    { icon: "fa-brands fa-typescript", name: "TypeScript", level: 0 },
     { icon: "fa-brands fa-react", name: "React",         level: 0 },
     { icon: "fa-brands fa-github", name: "Next.js",         level: 0 },
     { icon: "fa-brands fa-github", name: "Node.js",        level: 0 },
