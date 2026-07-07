@@ -153,14 +153,27 @@ const PORTFOLIO_DATA = {
   /* ── Skills ───────────────────────────────────────────────── */
   /* level: 0–100. Controls the width of the progress bar. */
   skills: [
+    { icon: "fa-brands fa-figma", name: "Figma",    level: 0 },
     { icon: "fa-brands fa-square-js", name: "JavaScript", level: 0 },
     { icon: "fa-brands fa-react", name: "React",         level: 0 },
-    { icon: "fa-brands fa-github", name: "Next.js",         level: 0 },
-    { icon: "fa-brands fa-github", name: "Node.js",        level: 0 },
-    { icon: "fa-brands fa-github", name: "Express",         level: 0 },
-    { icon: "fa-brands fa-github", name: "UI/UX Design",             level: 0 },
-    { icon: "fa-brands fa-github", name: "Python",                   level: 0 },
-    { icon: "fa-brands fa-github", name: "Databases (SQL/NoSQL)",    level: 0 },
+    { icon: "fa-brands fa-node-js", name: "Node.js",        level: 0 },
+    { icon: "fa-brands fa-github", name: "Github",             level: 0 },
+    { icon: "fa-brands fa-python", name: "Python",                   level: 0 },
+    { icon: "fa-solid fa-database", name: "Databases (SQL/NoSQL)",    level: 0 },
+    { icon: "fa-brands fa-wordpress", name: "WordPress",    level: 0 },
+    { icon: "fa-brands fa-elementor", name: "Elementor",    level: 0 },
+    { icon: "fa-brands fa-google", name: "Google Search Console",    level: 0 },
+    { icon: "fa-solid fa-magnifying-glass", name: "Search Engine Optimization",    level: 0 },
+    { icon: "fa-brands fa-wix", name: "Wix",    level: 0 },
+    { icon: "fa-brands fa-webflow", name: "Webflow",    level: 0 },
+    { icon: "fa-solid fa-t", name: "Tailwind",    level: 0 },
+    { icon: "fa-brands fa-bootstrap", name: "Bootstrap",    level: 0 },
+    { icon: "fa-brands fa-html5", name: "HTML",    level: 0 },
+    { icon: "fa-brands fa-css3-alt", name: "CSS",    level: 0 },
+    { icon: "fa-solid fa-c", name: "Canva",    level: 0 },
+    { icon: "fa-brands fa-meta", name: "Meta Business Suite",    level: 0 },
+    { icon: "fa-brands fa-linkedin-in", name: "Corporate LinkedIn",    level: 0 },
+    { icon: "fa-solid fa-code", name: "Visual Studio Code",    level: 0 },
   ],
 
   /* ── Social Links ─────────────────────────────────────────── */
