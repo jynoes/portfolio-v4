@@ -153,27 +153,27 @@ const PORTFOLIO_DATA = {
   /* ── Skills ───────────────────────────────────────────────── */
   /* level: 0–100. Controls the width of the progress bar. */
   skills: [
-    { icon: "fa-brands fa-figma", name: "Figma",    level: 0 },
-    { icon: "fa-brands fa-square-js", name: "JavaScript", level: 0 },
-    { icon: "fa-brands fa-react", name: "React",         level: 0 },
-    { icon: "fa-brands fa-node-js", name: "Node.js",        level: 0 },
-    { icon: "fa-brands fa-github", name: "Github",             level: 0 },
-    { icon: "fa-brands fa-python", name: "Python",                   level: 0 },
-    { icon: "fa-solid fa-database", name: "Databases (SQL/NoSQL)",    level: 0 },
-    { icon: "fa-brands fa-wordpress", name: "WordPress",    level: 0 },
-    { icon: "fa-brands fa-elementor", name: "Elementor",    level: 0 },
-    { icon: "fa-brands fa-google", name: "Google Search Console",    level: 0 },
-    { icon: "fa-solid fa-magnifying-glass", name: "Search Engine Optimization",    level: 0 },
-    { icon: "fa-brands fa-wix", name: "Wix",    level: 0 },
-    { icon: "fa-brands fa-webflow", name: "Webflow",    level: 0 },
-    { icon: "fa-solid fa-t", name: "Tailwind",    level: 0 },
-    { icon: "fa-brands fa-bootstrap", name: "Bootstrap",    level: 0 },
-    { icon: "fa-brands fa-html5", name: "HTML",    level: 0 },
-    { icon: "fa-brands fa-css3-alt", name: "CSS",    level: 0 },
-    { icon: "fa-solid fa-c", name: "Canva",    level: 0 },
-    { icon: "fa-brands fa-meta", name: "Meta Business Suite",    level: 0 },
-    { icon: "fa-brands fa-linkedin-in", name: "Corporate LinkedIn",    level: 0 },
-    { icon: "fa-solid fa-code", name: "Visual Studio Code",    level: 0 },
+    { icon: "fa-brands fa-figma",            name: "Figma",                       blurb: "Interface design, prototyping, and design systems.",        level: 90 },
+    { icon: "fa-brands fa-square-js",        name: "JavaScript",                  blurb: "Interactive logic for dynamic, client-side experiences.",   level: 85 },
+    { icon: "fa-brands fa-react",            name: "React",                       blurb: "Component-based UIs for fast, maintainable frontends.",     level: 80 },
+    { icon: "fa-brands fa-node-js",          name: "Node.js",                     blurb: "Server-side JavaScript for APIs and backend logic.",        level: 75 },
+    { icon: "fa-brands fa-github",           name: "Github",                      blurb: "Version control, code review, and team collaboration.",     level: 85 },
+    { icon: "fa-brands fa-python",           name: "Python",                      blurb: "Scripting, automation, and lightweight data tasks.",        level: 70 },
+    { icon: "fa-solid fa-database",          name: "Databases (SQL/NoSQL)",       blurb: "Structuring, querying, and managing application data.",     level: 65 },
+    { icon: "fa-brands fa-wordpress",        name: "WordPress",                   blurb: "Building and maintaining CMS-driven business sites.",      level: 90 },
+    { icon: "fa-brands fa-elementor",        name: "Elementor",                   blurb: "Drag-and-drop page building with pixel-level control.",     level: 88 },
+    { icon: "fa-brands fa-google",           name: "Google Search Console",       blurb: "Monitoring indexing, performance, and search health.",      level: 75 },
+    { icon: "fa-solid fa-magnifying-glass",  name: "Search Engine Optimization",  blurb: "Improving visibility through on-page SEO practices.",      level: 78 },
+    { icon: "fa-brands fa-wix",              name: "Wix",                         blurb: "Fast website builds for small business clients.",           level: 82 },
+    { icon: "fa-brands fa-webflow",          name: "Webflow",                     blurb: "Visual web design with production-ready markup.",          level: 70 },
+    { icon: "fa-solid fa-t",                 name: "Tailwind",                    blurb: "Utility-first styling for rapid, consistent UI.",           level: 75 },
+    { icon: "fa-brands fa-bootstrap",        name: "Bootstrap",                   blurb: "Responsive components for cross-device layouts.",          level: 80 },
+    { icon: "fa-brands fa-html5",            name: "HTML",                       blurb: "Semantic markup as the foundation of every build.",        level: 92 },
+    { icon: "fa-brands fa-css3-alt",         name: "CSS",                         blurb: "Layout, responsiveness, and visual polish.",                level: 90 },
+    { icon: "fa-solid fa-c",                 name: "Canva",                       blurb: "Quick, on-brand graphics for web and social.",              level: 85 },
+    { icon: "fa-brands fa-meta",             name: "Meta Business Suite",         blurb: "Managing content and engagement across Meta platforms.",   level: 80 },
+    { icon: "fa-brands fa-linkedin-in",      name: "Corporate LinkedIn",          blurb: "Brand-voice content for company LinkedIn presence.",       level: 75 },
+    { icon: "fa-solid fa-code",              name: "Visual Studio Code",          blurb: "Daily driver editor for every part of the stack.",          level: 88 },
   ],
 
   /* ── Social Links ─────────────────────────────────────────── */
@@ -340,17 +340,18 @@ function initScrollObserver() {
 
 
 /* ================================================================
-   5. SKILL BAR ANIMATION
+   5. SKILL CARD ANIMATION
    ----------------------------------------------------------------
-   Reads data-level (0–100) from each .skill-card and animates
-   the inner .skill-bar-fill width.
+   Staggers each .skill-card into view, and wires up the
+   cursor-following spotlight effect on hover.
 ================================================================ */
 
 let skillsAnimated = false;
 
 /**
  * animateSkillBars
- * Staggered animation: each bar starts 80ms after the last.
+ * Staggered fade/scale-in for each skill card as the About page opens,
+ * plus animates each proficiency bar to its level.
  * Only runs once (skillsAnimated flag prevents re-runs).
  */
 function animateSkillBars() {
@@ -358,13 +359,31 @@ function animateSkillBars() {
   skillsAnimated = true;
 
   document.querySelectorAll('.skill-card').forEach((card, index) => {
-    const level = parseInt(card.dataset.level, 10) || 0;
-    const fill  = card.querySelector('.skill-bar-fill');
-    if (!fill) return;
+    const fill  = card.querySelector('.skill-proficiency-fill');
+    const level = fill ? (parseInt(fill.dataset.level, 10) || 0) : 0;
 
     setTimeout(() => {
-      fill.style.width = level + '%';
-    }, index * 85);   /* 85ms stagger between each bar */
+      card.classList.add('skill-in');
+      if (fill) fill.style.width = level + '%';
+    }, index * 45);   /* 45ms stagger between each card */
+  });
+}
+
+/**
+ * initSkillSpotlight
+ * Tracks the cursor position over each .skill-card and writes it to
+ * CSS custom properties (--mx / --my) so style.css can render a soft
+ * light that follows the mouse (see .skill-card::before).
+ */
+function initSkillSpotlight() {
+  document.querySelectorAll('.skill-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width)  * 100;
+      const y = ((e.clientY - rect.top)  / rect.height) * 100;
+      card.style.setProperty('--mx', x + '%');
+      card.style.setProperty('--my', y + '%');
+    });
   });
 }
 
@@ -759,8 +778,26 @@ function renderAbout() {
 }
 
 /**
+ * skillTier
+ * Turns a 0–100 level into a short, human-readable label.
+ * ★ EDIT the thresholds/labels here if you'd rather use your own scale.
+ */
+function skillTier(level) {
+  if (level >= 90) return 'Expert';
+  if (level >= 75) return 'Advanced';
+  if (level >= 60) return 'Proficient';
+  return 'Familiar';
+}
+
+// NEW
+/**
  * renderSkills
  * Builds the skill cards from PORTFOLIO_DATA.skills.
+ * Every card uses the single global --color-accent token (no per-card
+ * color) — recoloring --color-accent in style.css recolors every card
+ * at once. Each card shows: a large translucent icon watermarked in
+ * the background, a solid icon badge, the name, a one-line blurb, and
+ * a proficiency bar + percentage.
  */
 function renderSkills() {
   const grid = document.getElementById('skills-grid');
@@ -768,12 +805,37 @@ function renderSkills() {
 
   grid.innerHTML = PORTFOLIO_DATA.skills
     .map(s => `
-      <div class="skill-card" data-level="${s.level}">
-        <div><i class="${s.icon}"></i></div>
+      <div class="skill-card">
+
+        <div class="skill-icon-box">
+          <i class="${s.icon}"></i>
+        </div>
+
         <div class="skill-name">${s.name}</div>
+        <p class="skill-blurb">${s.blurb}</p>
+
       </div>
     `)
     .join('');
+
+  initSkillSpotlight();
+}
+
+/**
+ * initSkillGlow
+ * Makes the soft light on each skill card follow the cursor.
+ * On every mousemove we store the pointer's position relative to the
+ * card in --mx / --my; the CSS ::before radial-gradient reads those
+ * vars, and a plain :hover rule fades the glow in and out.
+ */
+function initSkillGlow() {
+  document.querySelectorAll('.skill-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${e.clientX - rect.left}px`);
+      card.style.setProperty('--my', `${e.clientY - rect.top}px`);
+    });
+  });
 }
 
 /**
