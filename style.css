@@ -1076,11 +1076,13 @@ html.light .modal-overlay { background: rgba(0, 0, 0, 0.45); }
   border-radius: var(--radius-lg);
   padding: 1.35rem 1.25rem 1.5rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   opacity: 0;
   transform: translateY(14px) scale(0.98);
   transition: opacity 0.45s ease, transform 0.45s ease,
               border-color var(--transition-base), box-shadow var(--transition-base);
+  gap: 20px;
+  height: 130px;
 }
 
 .skill-card.skill-in {
@@ -1130,7 +1132,7 @@ html.light .modal-overlay { background: rgba(0, 0, 0, 0.45); }
 .skill-icon-box {
   position: relative;
   z-index: 1;
-  width: 42px;
+  width: 30%;
   height: 42px;
   border-radius: 12px;
   display: flex;

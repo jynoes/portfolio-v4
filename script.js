@@ -811,8 +811,10 @@ function renderSkills() {
           <i class="${s.icon}"></i>
         </div>
 
+        <div>
         <div class="skill-name">${s.name}</div>
         <p class="skill-blurb">${s.blurb}</p>
+        </div>
 
       </div>
     `)
