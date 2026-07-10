@@ -44,6 +44,26 @@ const PORTFOLIO_DATA = {
   heroHeading: " crafting products from idea to launch.",
   heroBio:     `UI/UX Designer and WordPress Developer with a passion for turning ideas into meaningful digital experiences. I blend user-centered design, modern web development, and attention to detail to create websites that not only look great but also deliver real business value.`,
 
+    /* ── Hero background icons ───────────────────────────────────
+     Skills/services shown scattered behind the hero heading.
+     Each pops in on page load, grouped into 3 staggered sets
+     (see popHeroIcons() in script.js). Position values are
+     percentages of the #hero section (top/left = center point
+     of the icon). rotate is in degrees, size in px.
+     ★ EDIT: swap icons/positions to match the services you want
+     to headline — any Font Awesome class works.                */
+  heroIcons: [
+    { icon: "fa-brands fa-figma",           top: 20, left: 30, rotate: -12, size: 34 },
+    { icon: "fa-solid fa-code",             top: 14, left: 47, rotate: -6,  size: 26 },
+    { icon: "fa-brands fa-wordpress",       top: 26, left: 86, rotate: 10,  size: 32 },
+    { icon: "fa-solid fa-magnifying-glass", top: 46, left: 5,  rotate: -15, size: 28 },
+    { icon: "fa-brands fa-react",           top: 42, left: 93, rotate: 14,  size: 28 },
+    { icon: "fa-brands fa-elementor",       top: 66, left: 8,  rotate: 8,   size: 28 },
+    { icon: "fa-solid fa-palette",          top: 62, left: 90, rotate: -10, size: 28 },
+    { icon: "fa-brands fa-square-js",       top: 80, left: 22, rotate: 6,   size: 30 },
+    { icon: "fa-brands fa-github",          top: 78, left: 76, rotate: -8,  size: 28 },
+  ],
+
   /* ── About ────────────────────────────────────────────────── */
   /* photo: path to your image file, or leave empty string "" for emoji */
   photo:       "",
@@ -52,7 +72,7 @@ const PORTFOLIO_DATA = {
   aboutParagraphs: [
     `I'm a developer and designer based in <strong>Metro Manila, Philippines</strong>.
      I got into tech because I love turning ideas into things people can actually use.`,
-    `When I'm not building, I'm usually reading, learning something new,
+    `When I'm not building, I'm usually illustrating, reading, learning something new,
      or hunting for good coffee. I care a lot about craft — clean code
      and interfaces that feel effortless.`,
     `I'm currently open to full-time roles, freelance projects,
@@ -662,6 +682,59 @@ function renderHeroGrid() {
 }
 
 /**
+ * renderHeroIcons
+ * Builds the scattered skill/service icons behind the hero heading
+ * from PORTFOLIO_DATA.heroIcons. Each icon starts invisible (see
+ * .hero-icon in style.css) — popHeroIcons() reveals them afterwards.
+ * Also assigns each icon to one of 3 groups (round-robin) so they
+ * pop in as 3 staggered sets rather than all at once.
+ */
+function renderHeroIcons() {
+  const container = document.getElementById('hero-icons');
+  if (!container) return;
+
+  container.innerHTML = PORTFOLIO_DATA.heroIcons
+    .map((icon, index) => {
+      const group      = index % 3;                           /* 0, 1, or 2 */
+      const floatDur   = (6 + Math.random() * 2).toFixed(2);   /* 6-8s so icons don't float in lockstep */
+      const floatDelay = (Math.random() * 2).toFixed(2);
+      const style = [
+        `--hi-top: ${icon.top}%`,
+        `--hi-left: ${icon.left}%`,
+        `--hi-rot: ${icon.rotate}deg`,
+        `--hi-float-dur: ${floatDur}s`,
+        `--hi-float-delay: ${floatDelay}s`,
+        `font-size: ${icon.size}px`,
+      ].join('; ');
+
+      return `<i class="hero-icon ${icon.icon}" data-group="${group}" style="${style}"></i>`;
+    })
+    .join('');
+}
+
+/**
+ * popHeroIcons
+ * Reveals the hero icons in 3 staggered sets (group 0, then 1, then 2),
+ * each set popping in together with a bouncy scale-up (see .hero-icon.popped
+ * in style.css). Runs once per page load — re-showing the Work tab won't
+ * re-trigger it, matching the one-time skill-card animation elsewhere.
+ */
+let heroIconsPopped = false;
+function popHeroIcons() {
+  if (heroIconsPopped) return;
+  heroIconsPopped = true;
+
+  const GROUP_DELAY = 450;   /* ms between each set of icons popping in */
+
+  for (let group = 0; group < 3; group++) {
+    setTimeout(() => {
+      document.querySelectorAll(`.hero-icon[data-group="${group}"]`)
+        .forEach(el => el.classList.add('popped'));
+    }, 500 + group * GROUP_DELAY);
+  }
+}
+
+/**
  * renderHero
  * Fills in the hero heading, bio, and availability dot.
  */
@@ -935,7 +1008,9 @@ document.addEventListener('click', e => {
   initTheme();          /* Apply saved dark/light preference     */
   renderNav();          /* Logo initials                         */
   renderHeroGrid();     /* 4×4 background grid cells             */
+  // renderHeroIcons();    /* hero icons behind heading             */
   renderHero();         /* Hero heading, bio, availability       */
+  // popHeroIcons();       /* Animates the hero icons               */
   renderExperience();   /* Experience list                       */
   renderProjects();     /* Project cards                         */
   renderAbout();        /* About photo + bio                     */
