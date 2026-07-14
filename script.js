@@ -574,7 +574,7 @@ async function submitContact() {
 
   /* Disable button while submitting */
   submitBtn.disabled  = true;
-  submitBtn.textContent = 'Sending…';
+  document.getElementById('cf-submit-label').textContent = 'Sending…';
 
   try {
     const res = await fetch(endpoint, {
@@ -597,7 +597,7 @@ async function submitContact() {
   }
 
   submitBtn.disabled  = false;
-  submitBtn.textContent = 'Send message →';
+  document.getElementById('cf-submit-label').textContent = 'Send message →';
 }
 
 /**

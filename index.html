@@ -98,7 +98,10 @@
     <!-- Resume CTA — filled accent cell, like "Get Started" in reference -->
     <div class="nav-cta-cell">
       <a href="documents/Sabido - CV.pdf" class="resume-link" target="_blank" rel="noopener">
-        Resume ↗
+        <span class="btn-text-wrap">
+          <span class="btn-text">Resume ↗</span>
+          <span class="btn-text btn-text-clone" aria-hidden="true">Resume ↗</span>
+        </span>
       </a>
     </div>
 
@@ -199,10 +202,16 @@
         <!-- CTA Buttons -->
         <div class="hero-cta-row fade-in">
           <a href="#" data-page="contact" class="btn btn-primary hero-cta-link">
-            Get in touch →
+            <span class="btn-text-wrap">
+              <span class="btn-text">Get in touch →</span>
+              <span class="btn-text btn-text-clone" aria-hidden="true">Get in touch →</span>
+            </span>
           </a>
           <a href="#" data-page="about" class="btn btn-ghost hero-cta-link">
-            About me
+            <span class="btn-text-wrap">
+              <span class="btn-text">About me</span>
+              <span class="btn-text btn-text-clone" aria-hidden="true">About me</span>
+            </span>
           </a>
         </div>
 
@@ -344,7 +353,10 @@
               class="btn btn-primary btn-full"
               onclick="submitContact()"
             >
-              Send message →
+              <span class="btn-text-wrap">
+                <span class="btn-text" id="cf-submit-label">Send message →</span>
+                <span class="btn-text btn-text-clone" aria-hidden="true">Send message →</span>
+              </span>
             </button>
 
             <!-- Status message set by setStatus() in script.js -->

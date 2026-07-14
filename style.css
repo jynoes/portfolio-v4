@@ -79,6 +79,8 @@
   --transition-fast:   0.15s ease;
   --transition-base:   0.25s ease;
   --transition-slow:   0.45s ease;
+  --ease-power:        cubic-bezier(0.76, 0, 0.24, 1);
+  --btn-anim-duration: 0.5s;
 }
 
 
@@ -423,8 +425,40 @@ html.light .nav-hatch { background-color: var(--color-surface); }
 }
 
 .nav-cta-cell a:hover {
-  background: var(--color-accent-light);
+  background: var(--color-accent);
   color: #fff;
+}
+
+/* ── Resume link text-slide animation ──────────────────────── */
+.btn-text-wrap {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  height: 1.3em;
+  line-height: 1.3em;
+}
+
+.btn-text {
+  display: block;
+  white-space: nowrap;
+  transition: transform var(--btn-anim-duration) var(--ease-power);
+  will-change: transform;
+}
+
+.btn-text-clone {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+}
+
+.nav-cta-cell a:hover .btn-text,
+.btn:hover .btn-text {
+  transform: translateY(-100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-text { transition: none; }
 }
 
 /* ── Theme toggle cell ────────────────────────────────────────
@@ -797,8 +831,8 @@ html.light .nav-hatch { background-color: var(--color-surface); }
 }
 
 .btn-primary:hover {
-  background: var(--color-accent-light);
-  border-color: var(--color-accent-light);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
   color: #fff;
   transform: translateY(-1px);
 }
