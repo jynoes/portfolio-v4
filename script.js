@@ -213,7 +213,7 @@ services: [
   {
     title: "Pitch Decks & Collaterals",
     blurb: "Polished, persuasive presentations and high-impact marketing assets.",
-    icon: "images/services/svg-3.svg",
+    icon: "images/services/svg-2.svg",
   },
   {
     title: "Hand-drawn Illustrations",
