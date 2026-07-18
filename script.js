@@ -10,7 +10,7 @@
    4.  Scroll Animations (initScrollObserver)
    5.  Skill Bars      (animateSkillBars)
    6.  Mobile Menu     (toggleMenu, closeMobileMenu)
-   7.  Project Modal   (openProject, closeModal)
+   7.  Project Case Study Page (openCaseStudy, renderCaseStudy)
    8.  Contact Form    (submitContact)
    9.  Event Listeners & Init
 ================================================================ */
@@ -119,6 +119,34 @@ const PORTFOLIO_DATA = {
       links: [
         { label: "Live Site →",  url: "https://duckdonutsph.com/" },
       ],
+      /* ── Case study content ─────────────────────────────────
+         ★ EDIT: this is placeholder copy — replace every field
+         with your real process, decisions, and learnings.      */
+      caseStudy: {
+        role:     "UI/UX Designer & Developer",
+        timeline: "3 weeks",
+        overview: `Duck Donuts needed a Philippine-market website that could go live fast without losing the brand's playful, customizable-donut personality. I owned the project end to end — from wireframes in Figma to a fully built, responsive WordPress site.`,
+        problem:  `★ EDIT: describe the constraint that made this project interesting — e.g. a tight 3-week timeline, limited assets from the brand, or the need to translate a US franchise identity for a local audience.`,
+        process: [
+          {
+            title: "Research & Discovery",
+            body:  `★ EDIT: what did you look at before designing — competitor donut/QSR sites, the existing Duck Donuts US site, brand guidelines? What did you learn that shaped your approach?`,
+          },
+          {
+            title: "Wireframes & Structure",
+            body:  `★ EDIT: how did you plan the page structure and user flow in Figma? Any early sketches or low-fidelity layouts worth mentioning?`,
+          },
+          {
+            title: "Visual Design",
+            body:  `★ EDIT: how did you translate the playful Duck Donuts brand into layout, color, and imagery choices? Any specific Elementor components or custom styling?`,
+          },
+          {
+            title: "Build & QA",
+            body:  `★ EDIT: how did you build it in WordPress/Elementor, and what did you test before launch — responsiveness, load speed, cross-browser checks?`,
+          },
+        ],
+        outcome: `★ EDIT: what was the result — launched on time, positive client feedback, measurable engagement? Add real numbers if you have them.`,
+      },
     },
     {
       id:             "proj2",
@@ -131,6 +159,34 @@ const PORTFOLIO_DATA = {
       links: [
         { label: "Live Site →", url: "https://pivoprahaph.com/" },
       ],
+      /* ── Case study content ─────────────────────────────────
+         ★ EDIT: this is placeholder copy — replace every field
+         with your real process, decisions, and learnings.      */
+      caseStudy: {
+        role:     "UI/UX Designer & Developer",
+        timeline: "★ EDIT: e.g. 4 weeks",
+        overview: `Pivo Praha needed a website that could carry its Czech craft-beer heritage online while still feeling at home in the Poblacion, Makati nightlife scene. I designed and built the site from the ground up in Figma and WordPress.`,
+        problem:  `★ EDIT: what was the core design challenge — balancing "authentic Czech heritage" with a modern nightlife brand? Limited photography? A need to highlight the menu and location clearly?`,
+        process: [
+          {
+            title: "Research & Discovery",
+            body:  `★ EDIT: what references did you pull from — Czech beer hall aesthetics, competitor craft-beer bars in Manila? What did the client's goals tell you?`,
+          },
+          {
+            title: "Wireframes & Structure",
+            body:  `★ EDIT: how did you structure the site (home, menu, location, about) and why? Any early low-fidelity layouts?`,
+          },
+          {
+            title: "Visual Design",
+            body:  `★ EDIT: how did you choose the color palette, typography, and imagery to feel both "Czech heritage" and "craft beer bar"?`,
+          },
+          {
+            title: "Build & QA",
+            body:  `★ EDIT: how did you bring it to life in Elementor/WordPress, and what did you check before launch?`,
+          },
+        ],
+        outcome: `★ EDIT: what happened after launch — client feedback, foot traffic from the site, anything measurable?`,
+      },
     },
     {
       id:             "proj3",
@@ -143,6 +199,34 @@ const PORTFOLIO_DATA = {
       links: [
         { label: "Live Site →", url: "https://funny-stardust-8d9344.netlify.app/" },
       ],
+      /* ── Case study content ─────────────────────────────────
+         ★ EDIT: this is placeholder copy — replace every field
+         with your real process, decisions, and learnings.      */
+      caseStudy: {
+        role:     "Designer & Developer",
+        timeline: "★ EDIT: e.g. a weekend, 1 week",
+        overview: `A self-directed project built to sharpen vanilla front-end skills — combining hand-drawn illustration with interactive HTML, CSS, and JavaScript animation, inspired by a YouTube tutorial series.`,
+        problem:  `★ EDIT: what were you trying to learn or prove with this project — animation timing, DOM manipulation, illustration-to-web workflow?`,
+        process: [
+          {
+            title: "Concept & Illustration",
+            body:  `★ EDIT: how did you sketch/illustrate the assets in Microsoft Paint, and what was the creative direction?`,
+          },
+          {
+            title: "Structure & Layout",
+            body:  `★ EDIT: how did you plan the HTML structure and CSS layout for the animated scenes?`,
+          },
+          {
+            title: "Animation & Interaction",
+            body:  `★ EDIT: what interactions or animations did you build with JavaScript, and what was tricky about getting them to feel right?`,
+          },
+          {
+            title: "Polish & Deploy",
+            body:  `★ EDIT: how did you test across browsers/screen sizes, and what was involved in deploying it (Netlify, GitHub)?`,
+          },
+        ],
+        outcome: `★ EDIT: what did you learn from building this, and how has it shaped projects since?`,
+      },
     },
     {
       id:             "proj4",
@@ -155,6 +239,34 @@ const PORTFOLIO_DATA = {
       links: [
         { label: "Figma →", url: "#" },
       ],
+      /* ── Case study content ─────────────────────────────────
+         ★ EDIT: this is placeholder copy — replace every field
+         with your real process, decisions, and learnings.      */
+      caseStudy: {
+        role:     "UI/UX Designer",
+        timeline: "★ EDIT: e.g. 1 week design assessment",
+        overview: `A conceptual redesign of the Maxicare mobile app, built as a design assessment for a job application. The goal was to simplify complex health-related information into an intuitive, business-driven mobile experience.`,
+        problem:  `★ EDIT: what pain point in the existing Maxicare app (or healthcare apps generally) were you asked to solve? Who was the target user?`,
+        process: [
+          {
+            title: "Research & Discovery",
+            body:  `★ EDIT: what user research or competitive analysis did you do — interviews, surveys, reviewing the existing app's pain points?`,
+          },
+          {
+            title: "Define & Ideate",
+            body:  `★ EDIT: how did you turn research into problem statements, user personas, or user flows? Any information-architecture decisions worth calling out?`,
+          },
+          {
+            title: "Wireframes & Prototyping",
+            body:  `★ EDIT: how did you move from low-fidelity wireframes to interactive Figma prototypes? What key screens did you focus on?`,
+          },
+          {
+            title: "Testing & Iteration",
+            body:  `★ EDIT: did you run usability testing or get feedback? What changed as a result?`,
+          },
+        ],
+        outcome: `★ EDIT: what was the final deliverable, and what feedback did you get on it (from the employer, peers, or testers)?`,
+      },
     },
     {
       id:             "proj5",
@@ -167,6 +279,34 @@ const PORTFOLIO_DATA = {
       links: [
         { label: "Live Site →", url: "https://sgbankph.com/" },
       ],
+      /* ── Case study content ─────────────────────────────────
+         ★ EDIT: this is placeholder copy — replace every field
+         with your real process, decisions, and learnings.      */
+      caseStudy: {
+        role:     "UI/UX Designer & Developer",
+        timeline: "★ EDIT: e.g. 3 weeks",
+        overview: `SG Bank needed a website that felt trustworthy and credible for a rural banking audience in Dumaguete, while clearly presenting its financial products. I designed and developed the site in Figma and WordPress.`,
+        problem:  `★ EDIT: what made this project distinct — a need for accessibility for a wide range of users, trust-building for a financial brand, or presenting many product types clearly?`,
+        process: [
+          {
+            title: "Research & Discovery",
+            body:  `★ EDIT: what did you look at — other rural/community bank sites, accessibility standards, the client's existing materials?`,
+          },
+          {
+            title: "Wireframes & Structure",
+            body:  `★ EDIT: how did you organize the many financial products and services into a clear, navigable structure?`,
+          },
+          {
+            title: "Visual Design",
+            body:  `★ EDIT: how did you balance "trustworthy bank" with an approachable, modern feel? Color, typography, imagery choices?`,
+          },
+          {
+            title: "Build & QA",
+            body:  `★ EDIT: how did you build and test the site for accessibility, responsiveness, and performance before launch?`,
+          },
+        ],
+        outcome: `★ EDIT: what was the result — client satisfaction, improved credibility, positive customer feedback?`,
+      },
     },
   ],
 
@@ -482,84 +622,166 @@ hamburgerBtn.addEventListener('click', toggleMenu);
 
 
 /* ================================================================
-   7. PROJECT MODAL
+   7. PROJECT CASE STUDY PAGE
    ----------------------------------------------------------------
-   openProject(id) finds the project in PORTFOLIO_DATA, injects
-   its content into the modal panel, then shows the modal.
+   Clicking a project card navigates straight to a dedicated case
+   study page (id="page-project"), populated dynamically from
+   PORTFOLIO_DATA.projects[].caseStudy. Deep-linkable via
+   "#project/{id}" and supports browser back/forward.
 ================================================================ */
 
-const modal = document.getElementById('project-modal');
-
 /**
- * openProject
- * Populates and opens the project detail modal.
- * @param {string} projectId - must match a PORTFOLIO_DATA.projects[].id
+ * renderCaseStudy
+ * Fills the #page-project template with one project's content.
+ * @param {object} project - an entry from PORTFOLIO_DATA.projects
  */
-function openProject(projectId) {
-  const project = PORTFOLIO_DATA.projects.find(p => p.id === projectId);
-  if (!project || !modal) return;
+function renderCaseStudy(project) {
+  const cs = project.caseStudy || {};
 
-  /* Track which project was opened */
-  trackEvent('select_content', {
-    content_type: 'project',
-    item_id:      project.id,
-    item_name:    project.title,
-  });
-
-  /* ── Inject content into modal ──────────────────────────── */
-
-  /* Thumbnail hero */
-  const hero = modal.querySelector('.modal-hero');
+  /* Hero image / gradient */
+  const hero = document.getElementById('cs-hero');
   if (project.image) {
-    hero.innerHTML = `<img src="${project.image}" alt="${project.imageAlt || project.title}" />`;
+    hero.innerHTML = `<img src="${project.image}" alt="${project.imageAlt || project.title}" onerror="this.style.display='none'; this.parentElement.style.background='${project.thumbGradient || 'var(--color-surface-alt)'}';" />`;
+    hero.style.background = '';
   } else {
     hero.innerHTML = '';
     hero.style.background = project.thumbGradient || 'var(--color-surface-alt)';
   }
 
-  /* Title */
-  modal.querySelector('.modal-title').textContent = project.title;
-
-  /* Tags / chips */
-  const tagsEl = modal.querySelector('.modal-tags');
-  tagsEl.innerHTML = project.tags
+  /* Title, summary, tags */
+  document.getElementById('cs-title').textContent = project.title;
+  document.getElementById('cs-summary').textContent = project.detail || project.summary || '';
+  document.getElementById('cs-tags').innerHTML = (project.tags || [])
     .map(t => `<span class="chip">${t}</span>`)
     .join('');
 
-  /* Detail description (supports basic HTML via innerHTML) */
-  modal.querySelector('.modal-detail').innerHTML =
-    project.detail.replace(/\n/g, '<br>');
+  /* Meta row: role / timeline */
+  const metaEl = document.getElementById('cs-meta');
+  const metaItems = [];
+  if (cs.role)     metaItems.push(`<div class="cs-meta-item"><span class="cs-meta-label">Role</span>${cs.role}</div>`);
+  if (cs.timeline) metaItems.push(`<div class="cs-meta-item"><span class="cs-meta-label">Timeline</span>${cs.timeline}</div>`);
+  metaEl.innerHTML = metaItems.join('');
+
+  /* Overview / Problem / Outcome text blocks */
+  setBlockText('cs-overview-block', 'cs-overview', cs.overview);
+  setBlockText('cs-problem-block',  'cs-problem',  cs.problem);
+  setBlockText('cs-outcome-block',  'cs-outcome',  cs.outcome);
+
+  /* Process steps */
+  const processBlock = document.getElementById('cs-process-block');
+  const processEl = document.getElementById('cs-process');
+  if (cs.process && cs.process.length) {
+    processBlock.style.display = '';
+    processEl.innerHTML = cs.process
+      .map((step, i) => `
+        <div class="cs-step">
+          <div class="cs-step-num">${String(i + 1).padStart(2, '0')}</div>
+          <div class="cs-step-body">
+            <h4 class="cs-step-title">${step.title}</h4>
+            <p>${(step.body || '').replace(/\n/g, '<br>')}</p>
+          </div>
+        </div>
+      `)
+      .join('');
+  } else {
+    processBlock.style.display = 'none';
+  }
 
   /* Links / CTA buttons */
-  const linksEl = modal.querySelector('.modal-links');
-  linksEl.innerHTML = project.links
+  document.getElementById('cs-links').innerHTML = (project.links || [])
     .map(l => `<a href="${l.url}" class="btn btn-primary" target="_blank" rel="noopener">${l.label}</a>`)
     .join('');
 
-  /* ── Show the modal ─────────────────────────────────────── */
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';   /* prevent page scroll behind modal */
+  /* Prev / Next case study nav */
+  const all = PORTFOLIO_DATA.projects;
+  const idx = all.findIndex(p => p.id === project.id);
+  const prev = all[(idx - 1 + all.length) % all.length];
+  const next = all[(idx + 1) % all.length];
+  document.getElementById('cs-nav').innerHTML = `
+    <a href="#project/${prev.id}" class="cs-nav-link cs-nav-prev" onclick="event.preventDefault(); openCaseStudy('${prev.id}');">
+      <span class="cs-nav-dir">← Previous</span>
+      <span class="cs-nav-title">${prev.title}</span>
+    </a>
+    <a href="#project/${next.id}" class="cs-nav-link cs-nav-next" onclick="event.preventDefault(); openCaseStudy('${next.id}');">
+      <span class="cs-nav-dir">Next →</span>
+      <span class="cs-nav-title">${next.title}</span>
+    </a>
+  `;
 }
 
 /**
- * closeModal
- * Hides the project modal and restores body scroll.
+ * setBlockText
+ * Small helper: hides a case-study block entirely if there's no
+ * copy for it yet, otherwise fills it in.
  */
-function closeModal() {
-  modal.classList.remove('open');
-  document.body.style.overflow = '';
+function setBlockText(blockId, fieldId, text) {
+  const block = document.getElementById(blockId);
+  const field = document.getElementById(fieldId);
+  if (!block || !field) return;
+  if (text && text.trim()) {
+    block.style.display = '';
+    field.innerHTML = text.replace(/\n/g, '<br>');
+  } else {
+    block.style.display = 'none';
+  }
 }
 
-/* Close on overlay click */
-modal.querySelector('.modal-overlay').addEventListener('click', closeModal);
+/**
+ * openCaseStudy
+ * Navigates to the case study page for a given project id.
+ * @param {string} projectId - must match a PORTFOLIO_DATA.projects[].id
+ * @param {boolean} pushHistory - false when called from popstate/initial load
+ */
+function openCaseStudy(projectId, pushHistory = true) {
+  const project = PORTFOLIO_DATA.projects.find(p => p.id === projectId);
+  if (!project) return;
 
-/* Close on × button */
-modal.querySelector('.modal-close').addEventListener('click', closeModal);
+  renderCaseStudy(project);
 
-/* Close on Escape key */
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape' && modal.classList.contains('open')) {
-    closeModal();
+  /* Show the project page, hide the rest (mirrors showPage's job) */
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-project').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  /* Case studies live under "Work" — keep that tab highlighted */
+  document.querySelectorAll('[data-page]').forEach(link => {
+    link.classList.toggle('active', link.dataset.page === 'home');
+  });
+
+  if (pushHistory) {
+    history.pushState({ project: projectId }, '', `#project/${projectId}`);
+  }
+
+  trackEvent('select_content', {
+    content_type: 'project_case_study',
+    item_id:      project.id,
+    item_name:    project.title,
+  });
+  trackEvent('page_view', {
+    page_title:    `case-study-${project.id}`,
+    page_location: window.location.href.split('#')[0] + `#project/${project.id}`,
+  });
+
+  setTimeout(initScrollObserver, 80);
+  closeMobileMenu();
+}
+
+/**
+ * backToWork
+ * Leaves the case study page and returns to the Work tab.
+ */
+function backToWork() {
+  showPage('home');
+  history.pushState({}, '', window.location.pathname + window.location.search);
+}
+
+/* ── Browser back/forward support ───────────────────────────── */
+window.addEventListener('popstate', () => {
+  const match = window.location.hash.match(/^#project\/(.+)$/);
+  if (match) {
+    openCaseStudy(decodeURIComponent(match[1]), false);
+  } else {
+    showPage('home');
   }
 });
 
@@ -839,8 +1061,8 @@ function renderProjects() {
 
   grid.innerHTML = PORTFOLIO_DATA.projects
     .map(p => `
-      <div class="project-card fade-in" onclick="openProject('${p.id}')" role="button" tabindex="0"
-           aria-label="Open project: ${p.title}">
+      <div class="project-card fade-in" onclick="openCaseStudy('${p.id}')" role="button" tabindex="0"
+           aria-label="Open case study: ${p.title}">
 
         <div class="project-thumb">
           <img
@@ -1116,4 +1338,10 @@ document.addEventListener('click', e => {
   renderContact();      /* Social links                          */
   renderFooter();       /* Footer name                           */
   initScrollObserver(); /* Kick off scroll animations            */
+
+  /* Deep link: if the page loaded on "#project/{id}", open it directly */
+  const initialMatch = window.location.hash.match(/^#project\/(.+)$/);
+  if (initialMatch) {
+    openCaseStudy(decodeURIComponent(initialMatch[1]), false);
+  }
 })();

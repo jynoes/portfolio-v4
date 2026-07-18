@@ -894,7 +894,7 @@ html.light .nav-hatch { background-color: var(--color-surface); }
 
 
 /* ================================================================
-   11. PROJECT CARDS & MODAL
+   11. PROJECT CARDS
 ================================================================ */
 
 /* ── Card Grid ───────────────────────────────────────────────── */
@@ -965,118 +965,8 @@ html.light .nav-hatch { background-color: var(--color-surface); }
   margin-top: 0.75rem;
 }
 
-
-
-/* ── Project Detail Modal ─────────────────────────────────────
-   Full-screen overlay. JS adds .open to show it.
-──────────────────────────────────────────────────────────────── */
-#project-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--transition-base);
-}
-
-#project-modal.open {
-  opacity: 1;
-  pointer-events: all;
-}
-
-/* Dark scrim behind the modal panel */
-.modal-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  cursor: pointer;
-}
-
-html.light .modal-overlay { background: rgba(0, 0, 0, 0.45); }
-
-/* The white/dark panel that slides up */
-.modal-panel {
-  position: relative;
-  z-index: 1;
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
-  width: 100%;
-  max-width: 640px;
-  max-height: 88vh;
-  overflow-y: auto;
-  transform: translateY(24px);
-  transition: transform var(--transition-base);
-}
-
-#project-modal.open .modal-panel { transform: translateY(0); }
-
-/* Coloured header band inside the modal */
-.modal-hero {
-  width: 100%;
-  height: 300px;                          /* ★ EDIT: card image height        */
-  background: var(--color-surface-alt);  /* fallback colour if image is missing */
-  overflow: hidden;
-  position: relative;
-}
-
-.modal-hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, var(--color-surface) 100%);
-  pointer-events: none;
-}
-
-.modal-hero img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;       /* crops to fill — change to "contain" to letterbox */
-  object-position: center;    /* ★ EDIT: "top" shows the top of the screenshot,   */
-                           /*  "center" centres it, "bottom" shows the footer   */
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.modal-body { padding: 1.75rem 2rem 2rem; }
-
-.modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 36px;
-  height: 36px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background: var(--color-surface);
-  color: var(--color-text-muted);
-  font-size: 1.1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background var(--transition-fast), color var(--transition-fast);
-}
-
-.modal-close:hover {
-  background: var(--color-surface-alt);
-  color: var(--color-text);
-}
-
-.modal-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.75rem;
-  font-size: 0.8rem;
-  color: var(--color-text-faint);
-  font-family: var(--font-mono);
-}
-
+/* .modal-links is reused on the case study page for the
+   "Live Site" CTA — see section 20 below. */
 .modal-links {
   display: flex;
   gap: 0.75rem;
@@ -1564,6 +1454,11 @@ footer span { color: var(--color-accent-light); }
   .contact-grid  { grid-template-columns: 1fr; gap: 2rem; }
   .about-grid    { grid-template-columns: 1fr; }
   .about-photo   { max-width: 280px; margin: 0 auto; aspect-ratio: 1; }
+
+  .cs-meta-row { gap: 1.5rem; }
+  .cs-hero     { height: 220px; }
+  .cs-nav      { grid-template-columns: 1fr; }
+  .cs-nav-next { text-align: left; align-items: flex-start; }
 }
 
 @media (max-width: 640px) {
@@ -1595,4 +1490,193 @@ footer span { color: var(--color-accent-light); }
 
   .hero-cta-row { flex-direction: column; align-items: center; }
   .btn          { justify-content: center; width: 100%; max-width: 280px; }
+
+  .cs-step      { grid-template-columns: 44px 1fr; gap: 1rem; }
+}
+
+
+/* ================================================================
+   20. PROJECT CASE STUDY PAGE
+   ----------------------------------------------------------------
+   Styles for #page-project — the dedicated "how I designed this"
+   page opened when a project card is clicked. Reuses tokens and
+   patterns from the rest of the site (label, chip, btn, fade-in).
+================================================================ */
+
+/* Back link */
+.cs-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 2rem;
+  transition: color var(--transition-fast);
+}
+
+.cs-back:hover { color: var(--color-text); }
+
+/* Header */
+.cs-header h1 { margin-bottom: 0.6rem; }
+
+.cs-summary {
+  color: var(--color-text-muted);
+  max-width: 640px;
+  font-size: 1rem;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+/* Meta row: Role / Timeline */
+.cs-meta-row {
+  display: flex;
+  gap: 2.5rem;
+  margin: 1.75rem 0;
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cs-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.92rem;
+  color: var(--color-text);
+}
+
+.cs-meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+/* Hero image */
+.cs-hero {
+  width: 100%;
+  height: 420px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface-alt);
+  margin-bottom: 2.5rem;
+  border: 1px solid var(--color-border);
+}
+
+.cs-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* Content blocks: Overview / Problem / Outcome */
+.cs-block {
+  max-width: 720px;
+  margin-bottom: 2.75rem;
+}
+
+.cs-block-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--color-accent-light);
+  margin-bottom: 0.85rem;
+}
+
+.cs-block p {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+.cs-outcome p { margin-bottom: 0; }
+
+/* Design process steps */
+.cs-process {
+  display: flex;
+  flex-direction: column;
+  max-width: 720px;
+}
+
+.cs-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.cs-step:first-child { border-top: 1px solid var(--color-border); }
+
+.cs-step-num {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-accent-light);
+  padding-top: 2px;
+}
+
+.cs-step-title {
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.4rem;
+}
+
+.cs-step-body p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* Prev / Next case study nav */
+.cs-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.cs-nav-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: border-color var(--transition-base), transform var(--transition-base);
+}
+
+.cs-nav-link:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.cs-nav-next { text-align: right; align-items: flex-end; }
+
+.cs-nav-dir {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+}
+
+.cs-nav-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--color-text);
 }

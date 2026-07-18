@@ -128,42 +128,6 @@
 
 
   <!-- ==========================================================
-       PROJECT DETAIL MODAL
-       Shared by all project cards. Content is injected by
-       openProject() in script.js when a card is clicked.
-  =========================================================== -->
-  <div id="project-modal" role="dialog" aria-modal="true" aria-label="Project details">
-
-    <!-- Clicking the dark scrim closes the modal -->
-    <div class="modal-overlay"></div>
-
-    <div class="modal-panel">
-      <!-- Close button -->
-      <button class="modal-close" aria-label="Close modal">✕</button>
-
-      <!-- Coloured thumbnail (background + emoji set by JS) -->
-      <div class="modal-hero">
-      </div>
-
-      <div class="modal-body">
-        <!-- Tags row -->
-        <div class="modal-tags project-tags" style="margin-bottom: 1rem;"></div>
-
-        <!-- Title -->
-        <h2 class="modal-title" style="margin-bottom: 0.75rem;"></h2>
-
-        <!-- Full description -->
-        <p class="modal-detail" style="font-size: 0.95rem; line-height: 1.75;"></p>
-
-        <!-- Action links (Live site, GitHub, etc.) -->
-        <div class="modal-links"></div>
-      </div>
-    </div>
-
-  </div><!-- /project-modal -->
-
-
-  <!-- ==========================================================
        PAGE: HOME (Work)
        id must be "page-{tab name}" to match showPage() in JS
   =========================================================== -->
@@ -393,6 +357,68 @@
       </div>
     </section>
   </div><!-- /page-contact -->
+
+
+  <!-- ==========================================================
+       PAGE: PROJECT CASE STUDY (template)
+       Not a nav tab — reached by clicking a project card, or via
+       a direct link like "#project/proj1". All content below is
+       injected by renderCaseStudy() in script.js.
+  =========================================================== -->
+  <div id="page-project" class="page" aria-label="Project case study">
+    <section class="section">
+      <div class="container">
+
+        <!-- Back to work -->
+        <button type="button" class="cs-back" onclick="backToWork()">
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to work
+        </button>
+
+        <!-- Header: label, title, summary, tags -->
+        <div class="cs-header fade-in">
+          <div class="label">Case Study</div>
+          <h1 id="cs-title"></h1>
+          <p id="cs-summary" class="cs-summary"></p>
+          <div class="project-tags" id="cs-tags"></div>
+        </div>
+
+        <!-- Meta row: role / timeline, set by renderCaseStudy() -->
+        <div class="cs-meta-row fade-in" id="cs-meta"></div>
+
+        <!-- Hero image / gradient -->
+        <div class="cs-hero fade-in" id="cs-hero"></div>
+
+        <!-- Overview -->
+        <div class="cs-block fade-in" id="cs-overview-block">
+          <h3 class="cs-block-label">Overview</h3>
+          <p id="cs-overview"></p>
+        </div>
+
+        <!-- The Problem -->
+        <div class="cs-block fade-in" id="cs-problem-block">
+          <h3 class="cs-block-label">The Problem</h3>
+          <p id="cs-problem"></p>
+        </div>
+
+        <!-- Design Process — steps injected by renderCaseStudy() -->
+        <div class="cs-block fade-in" id="cs-process-block">
+          <h3 class="cs-block-label">Design Process</h3>
+          <div class="cs-process" id="cs-process"></div>
+        </div>
+
+        <!-- Outcome + live links -->
+        <div class="cs-block fade-in" id="cs-outcome-block">
+          <h3 class="cs-block-label">Outcome</h3>
+          <p id="cs-outcome"></p>
+          <div class="modal-links" id="cs-links"></div>
+        </div>
+
+        <!-- Prev / Next case study -->
+        <div class="cs-nav fade-in" id="cs-nav"></div>
+
+      </div>
+    </section>
+  </div><!-- /page-project -->
 
 
   <!-- ==========================================================
