@@ -46,6 +46,7 @@
   --color-text:         #fafafa;   /* Primary text                  */
   --color-text-muted:   #a1a1aa;   /* Secondary text / descriptions */
   --color-text-faint:   #52525b;   /* Placeholders, captions        */
+  --color-svg:          #807b7b;
 
   /* ── Brand Accent ─────────────────────────────────────────── */
   /* ★ Change --color-accent to recolor buttons, links, and highlights */
@@ -89,7 +90,7 @@
    the dark defaults above. JavaScript toggles that class.
 ──────────────────────────────────────────────────────────────── */
 html.light {
-  --color-bg:           #f8f8f9;
+  --color-bg:           #f5f5f5;
   --color-surface:      #ffffff;
   --color-surface-alt:  #f1f1f4;
   --color-border:       #e4e4e7;
@@ -98,6 +99,7 @@ html.light {
   --color-text:         #09090b;
   --color-text-muted:   #52525b;
   --color-text-faint:   #a1a1aa;
+  --color-svg:          #52525b7e;
 
   --color-accent:       #2c965b;
   --color-accent-light: #417a5a;
@@ -1031,7 +1033,7 @@ html.light .nav-hatch { background-color: var(--color-surface); }
   overflow: hidden;
   padding: 2rem;
   padding-bottom: 0;
-  color: var(--color-text-muted);   /* ★ this is what the SVG strokes inherit */
+  color: var(--color-svg);   /* ★ this is what the SVG strokes inherit */
   transition: color var(--transition-base);
 }
 
