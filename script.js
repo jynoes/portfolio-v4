@@ -374,6 +374,9 @@ services: [
   /* formAction: your Formspree endpoint (see README / launch guide)
      Leave as "#" until you've set up Formspree.               */
   formAction: "https://formspree.io/f/mdavvone",
+  calEnabled:     true,
+  calLink:        "jynoe-sabido/30min",   /* ★ EDIT: your real Cal.com link */
+  calButtonLabel: "Book a call",
 };
 
 /* ================================================================
@@ -493,6 +496,7 @@ function toggleTheme() {
   const isLight = document.documentElement.classList.toggle('light');
   localStorage.setItem('theme', isLight ? 'light' : 'dark');
   updateToggleIcon();
+  syncCalTheme();
 }
 
 /**
@@ -1237,7 +1241,81 @@ function initServiceSpotlight() {
   });
 }
 
+/**
+ * initCalEmbed
+ * ----------------------------------------------------------------
+ * Boots the Cal.com embed engine once (the loader script itself is
+ * in index.html <head>) and themes it to match the site's current
+ * dark/light mode. Safe to call even if PORTFOLIO_DATA.calEnabled
+ * is false — it just does nothing.
+ *
+ * Cal.com's embed auto-attaches a click listener to any element with
+ * a "data-cal-link" attribute, so once this has run, clicking a
+ * rendered booking button opens the scheduling popup automatically.
+ */
+function initCalEmbed() {
+  if (!PORTFOLIO_DATA.calEnabled || typeof Cal !== 'function') return;
 
+  const isLight = document.documentElement.classList.contains('light');
+
+  Cal('init', { origin: 'https://cal.com' });
+  Cal('ui', {
+    theme: isLight ? 'light' : 'dark',
+    styles: { branding: { brandColor: '#2c965b' } }, /* ★ EDIT: match --color-accent */
+    hideEventTypeDetails: false,
+    layout: 'month_view',
+  });
+}
+
+/**
+ * syncCalTheme
+ * Re-themes the Cal.com popup to match dark/light mode. Called by
+ * toggleTheme() whenever the user flips the site theme.
+ */
+function syncCalTheme() {
+  if (!PORTFOLIO_DATA.calEnabled || typeof Cal !== 'function') return;
+  const isLight = document.documentElement.classList.contains('light');
+  Cal('ui', { theme: isLight ? 'light' : 'dark' });
+}
+
+/**
+ * renderCalButtons
+ * Injects "Book a call" buttons into every slot on the page
+ * (hero CTA row + contact page) using the shared .btn styles
+ * already defined in style.css. Each button carries the
+ * data-cal-link attribute Cal.com's embed listens for.
+ */
+function renderCalButtons() {
+  if (!PORTFOLIO_DATA.calEnabled) return;
+
+  const buttonHTML = (variant) => `
+    <button
+      type="button"
+      class="btn ${variant}"
+      data-cal-link="${PORTFOLIO_DATA.calLink}"
+      data-cal-config='{"layout":"month_view"}'
+    >
+      <span class="btn-text-wrap">
+        <span class="btn-text">${PORTFOLIO_DATA.calButtonLabel} →</span>
+        <span class="btn-text btn-text-clone" aria-hidden="true">${PORTFOLIO_DATA.calButtonLabel} →</span>
+      </span>
+    </button>
+  `;
+
+  const heroSlot = document.getElementById('hero-cal-slot');
+  if (heroSlot) heroSlot.innerHTML = buttonHTML('btn-ghost');
+
+  const contactSlot = document.getElementById('contact-cal-slot');
+  if (contactSlot) contactSlot.innerHTML = buttonHTML('btn-primary');
+
+  /* Track booking-button clicks in GA4 (event delegation, since the
+     buttons are injected dynamically) */
+  document.addEventListener('click', e => {
+    if (e.target.closest('[data-cal-link]')) {
+      trackEvent('select_content', { content_type: 'book_a_call', item_id: PORTFOLIO_DATA.calLink });
+    }
+  });
+}
 
 /**
  * renderContact
@@ -1344,6 +1422,8 @@ document.addEventListener('click', e => {
   renderSkills();       /* Skill bars                            */
   renderContact();      /* Social links                          */
   renderFooter();       /* Footer name                           */
+  renderCalButtons();   /* "Book a call" buttons (Cal.com) */
+  initCalEmbed();       /* Boot + theme the Cal.com embed   */
   initScrollObserver(); /* Kick off scroll animations            */
 
   /* Deep link: if the page loaded on "#project/{id}", open it directly */

@@ -51,6 +51,42 @@
   gtag('config', 'G-CN0RKDWFS9', { send_page_view: false });
 </script>
 
+    <!-- ============================================================
+       CAL.COM EMBED — powers the "Book a call" buttons
+       ★ EDIT: set PORTFOLIO_DATA.calLink in script.js to your real
+       Cal.com username/event (e.g. "jynoe/intro-call"). This script
+       just loads the embed engine; the buttons that open it are
+       rendered by renderCalButtons() in script.js.
+  ============================================================ -->
+  <script type="text/javascript">
+    (function (C, A, L) {
+      let p = function (a, ar) { a.q.push(ar); };
+      let d = C.document;
+      C.Cal = C.Cal || function () {
+        let cal = C.Cal;
+        let ar = arguments;
+        if (!cal.loaded) {
+          cal.ns = {};
+          cal.q = cal.q || [];
+          d.head.appendChild(d.createElement("script")).src = A;
+          cal.loaded = true;
+        }
+        if (ar[0] === L) {
+          const api = function () { p(api, arguments); };
+          const namespace = ar[1];
+          api.q = api.q || [];
+          if (typeof namespace === "string") {
+            cal.ns[namespace] = cal.ns[namespace] || api;
+            p(cal.ns[namespace], ar);
+            p(cal, ["initNamespace", namespace]);
+          } else p(cal, ar);
+          return;
+        }
+        p(cal, ar);
+      };
+    })(window, "https://app.cal.com/embed/embed.js", "init");
+  </script>
+
   <!-- ============================================================
        STYLESHEET — all design, layout, and colors
   ============================================================ -->
@@ -177,6 +213,8 @@
               <span class="btn-text btn-text-clone" aria-hidden="true">About me</span>
             </span>
           </a>
+          <!-- "Book a call" button — injected by renderCalButtons() in script.js -->
+<span id="hero-cal-slot"></span>
         </div>
 
       </div>
@@ -290,8 +328,10 @@
         <div class="label fade-in">Contact</div>
         <h2 class="fade-in" style="margin-bottom: 0.5rem;">Let's talk.</h2>
         <p class="fade-in" style="margin-bottom: 2.5rem; max-width: 100%;">
-          I'm always up for interesting conversations. Use the form or any link below.
+          I'm always up for interesting conversations. Use the form, book a call or any link below.
         </p>
+
+        <div class="fade-in" id="contact-cal-slot" style="margin-bottom: 2.5rem;"></div>
 
         <div class="contact-grid fade-in">
 
