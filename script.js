@@ -689,7 +689,14 @@ function renderCaseStudy(project) {
 
   /* Links / CTA buttons */
   document.getElementById('cs-links').innerHTML = (project.links || [])
-    .map(l => `<a href="${l.url}" class="btn btn-primary" target="_blank" rel="noopener">${l.label}</a>`)
+    .map(l => `
+      <a href="${l.url}" class="btn btn-primary" target="_blank" rel="noopener">
+        <span class="btn-text-wrap">
+          <span class="btn-text">${l.label}</span>
+          <span class="btn-text btn-text-clone" aria-hidden="true">${l.label}</span>
+        </span>
+      </a>
+    `)
     .join('');
 
   /* Prev / Next case study nav */
