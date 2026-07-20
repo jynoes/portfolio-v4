@@ -168,7 +168,7 @@ const PORTFOLIO_DATA = {
          with your real process, decisions, and learnings.      */
       caseStudy: {
         role:     "UI/UX Designer & Developer",
-        timeline: "★ EDIT: e.g. 4 weeks",
+        timeline: "1 month & 2 weeks",
         overview: `Pivo Praha needed a website that could carry its Czech craft-beer heritage online while still feeling at home in the Poblacion, Makati nightlife scene. I designed and built the site from the ground up in Figma and WordPress.`,
         problem:  `★ EDIT: what was the core design challenge — balancing "authentic Czech heritage" with a modern nightlife brand? Limited photography? A need to highlight the menu and location clearly?`,
         process: [
