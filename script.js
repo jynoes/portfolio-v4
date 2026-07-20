@@ -123,29 +123,33 @@ const PORTFOLIO_DATA = {
          ★ EDIT: this is placeholder copy — replace every field
          with your real process, decisions, and learnings.      */
       caseStudy: {
-        role:     "UI/UX Designer & Developer",
-        timeline: "3 weeks",
-        overview: `Duck Donuts needed a Philippine-market website that could go live fast without losing the brand's playful, customizable-donut personality. I owned the project end to end — from wireframes in Figma to a fully built, responsive WordPress site.`,
-        problem:  `★ EDIT: describe the constraint that made this project interesting — e.g. a tight 3-week timeline, limited assets from the brand, or the need to translate a US franchise identity for a local audience.`,
-        process: [
-          {
-            title: "Research & Discovery",
-            body:  `★ EDIT: what did you look at before designing — competitor donut/QSR sites, the existing Duck Donuts US site, brand guidelines? What did you learn that shaped your approach?`,
-          },
-          {
-            title: "Wireframes & Structure",
-            body:  `★ EDIT: how did you plan the page structure and user flow in Figma? Any early sketches or low-fidelity layouts worth mentioning?`,
-          },
-          {
-            title: "Visual Design",
-            body:  `★ EDIT: how did you translate the playful Duck Donuts brand into layout, color, and imagery choices? Any specific Elementor components or custom styling?`,
-          },
-          {
-            title: "Build & QA",
-            body:  `★ EDIT: how did you build it in WordPress/Elementor, and what did you test before launch — responsiveness, load speed, cross-browser checks?`,
-          },
-        ],
-        outcome: `★ EDIT: what was the result — launched on time, positive client feedback, measurable engagement? Add real numbers if you have them.`,
+        role: "UI/UX Designer & WordPress Developer",
+  timeline: "3 weeks",
+
+  overview: `Duck Donuts needed a Philippine-market website that could go live before the opening of its first local branch. I handled the project end-to-end—from wireframes in Figma to a fully responsive WordPress website—while adapting an established international brand for a Filipino audience.`,
+
+  problem: `The biggest challenge was the timeline. The website had to be designed, developed, and launched before the first Duck Donuts branch officially opened in the Philippines. While the brand identity was already well established through Duck Donuts US, the experience needed to feel familiar to local customers and support the launch of a completely new market.`,
+
+  process: [
+    {
+      title: "Research & Discovery",
+      body: `I studied the existing Duck Donuts US website, official brand assets, and visual guidelines to ensure consistency with the global brand. I also researched local food and quick-service restaurant (QSR) websites to understand how Filipino users browse restaurant websites and interact with food brands. I paid close attention to how color, imagery, and call-to-actions influence appetite and purchasing decisions. These insights helped balance the playful Duck Donuts personality with a layout that felt familiar and easy to navigate for local customers.`,
+    },
+    {
+      title: "Wireframes & Structure",
+      body: `I first mapped the user journey in Figma with low-fidelity wireframes, prioritizing the information customers typically look for: the menu, store locations, and online ordering. Since delivery is primarily handled through GrabFood and Foodpanda in the Philippines, I made ordering highly visible by placing it in the navigation and dedicating a prominent section on the homepage. The overall structure followed browsing patterns common among Filipino users, allowing visitors to find key information with minimal effort.`,
+    },
+    {
+      title: "Visual Design",
+      body: `The visual design stayed faithful to Duck Donuts' vibrant identity by using the brand's signature colors, playful imagery, and appetizing product photography. The layouts emphasized large visuals and generous spacing to showcase the customizable donuts while maintaining a clean hierarchy that guided users toward ordering and learning more about the brand.`,
+    },
+    {
+      title: "Build & QA",
+      body: `I developed the website in WordPress using Elementor with a focus on responsiveness and performance. Before launch, I tested the website across multiple screen sizes and browsers, optimized images and page assets for faster loading, and ensured the mobile experience remained intuitive, knowing that the majority of visitors would access the site from their phones.`,
+    },
+  ],
+
+  outcome: `The website was successfully launched before the grand opening of Duck Donuts Philippines, helping establish the brand's online presence from day one. The project was delivered within the three-week timeline and received positive feedback from stakeholders for staying true to the international brand while catering to the local market. The website has since been updated to reflect Duck Donuts' 2025 global rebrand, demonstrating its ability to evolve alongside the brand.`,
       },
     },
     {
