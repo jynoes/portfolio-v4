@@ -167,37 +167,39 @@ const PORTFOLIO_DATA = {
          ★ EDIT: this is placeholder copy — replace every field
          with your real process, decisions, and learnings.      */
       caseStudy: {
-        role:     "UI/UX Designer & Developer",
-        timeline: "1 month & 2 weeks",
-        overview: `Pivo Praha needed a website that could carry its Czech craft-beer heritage online while still feeling at home in the Poblacion, Makati nightlife scene. I designed and built the site from the ground up in Figma and WordPress.`,
-        problem:  `★ EDIT: what was the core design challenge — balancing "authentic Czech heritage" with a modern nightlife brand? Limited photography? A need to highlight the menu and location clearly?`,
+        role: "UI/UX Designer & Developer",
+        timeline: "1 month, 2 weeks",
+        overview: `Pivo Praha needed a website that could showcase its Czech craft beer heritage while resonating with the vibrant nightlife culture of Poblacion, Makati. I led the project from design to development, creating the experience in Figma before bringing it to life in WordPress using Elementor.`,
+        problem: `The primary challenge was balancing authentic Czech branding with the expectations of a modern Manila audience. The website needed to communicate the brewery's heritage while also functioning as a marketing tool that highlighted its locations, products, and business partnerships in an engaging and accessible way.`,
+
         process: [
           {
             title: "Research & Discovery",
-            body:  `★ EDIT: what references did you pull from — Czech beer hall aesthetics, competitor craft-beer bars in Manila? What did the client's goals tell you?`,
+            body: `I explored the visual language of Czech breweries and traditional beer halls alongside modern craft beer bars and restaurants in Manila. I also reviewed competitor websites to understand how they presented their products, atmosphere, and brand story. These references helped shape a design that felt authentic without appearing outdated, while ensuring the experience aligned with the client's business goals.`,
           },
           {
             title: "Wireframes & Structure",
-            body:  `★ EDIT: how did you structure the site (home, menu, location, about) and why? Any early low-fidelity layouts?`,
+            body: `I planned the website around the information visitors would most likely look for: the brand story, beer products, locations, partners, and contact details. Low-fidelity wireframes in Figma helped establish a clear content hierarchy before moving into visual design, allowing stakeholders to review the structure early in the process and ensuring smooth navigation throughout the site.`,
           },
           {
             title: "Visual Design",
-            body:  `★ EDIT: how did you choose the color palette, typography, and imagery to feel both "Czech heritage" and "craft beer bar"?`,
+            body: `The visual identity drew inspiration directly from Pivo Praha's product packaging. The color palette was derived from the beer bottles and label designs, creating a consistent connection between the products and the digital experience. For typography, I paired Neue Haas Grotesk for clean, highly readable body text with Qalogre for headings to introduce a timeless, European-inspired character that complemented the brand's Czech heritage.`,
           },
           {
             title: "Build & QA",
-            body:  `★ EDIT: how did you bring it to life in Elementor/WordPress, and what did you check before launch?`,
+            body: `I developed the website in WordPress using Elementor, ensuring the final design remained faithful to the approved Figma layouts. Before launch, I verified mobile responsiveness across devices, optimized SEO fundamentals for search visibility, tested contact forms, and reviewed the overall user experience to ensure visitors could easily explore products and get in touch with the business.`,
           },
-        ],
-        outcome: `★ EDIT: what happened after launch — client feedback, foot traffic from the site, anything measurable?`,
-      },
+  ],
+
+  outcome: `The website was successfully launched as a polished digital presence for the brand. Visitors can now submit inquiries directly through integrated contact forms, allowing potential customers and business partners to connect with the owner more efficiently and helping generate qualified leads through the website.`,
+},
     },
     {
       id:             "proj3",
       title:          "Animated Portfolio",
       image:          "images/Animated Portfolio Preview.png",
       imageAlt:       "Animated Portfolio Preview",
-      tags:           ["HTML", "CSS", "JavaScript", "Github", "Microsoft Paint"],
+      tags:           ["HTML", "CSS", "JavaScript", "Github", "Microsoft Paint", "Netlify"],
       summary:        "Animating and coding in one project? Gotta do that!",
       detail:         `YouTube made me do it. A browser-based project developed using vanilla HTML, CSS, and JavaScript, showcasing interactive functionality, dynamic user interactions, and fundamental front-end development skills. `,
       links: [
@@ -207,30 +209,34 @@ const PORTFOLIO_DATA = {
          ★ EDIT: this is placeholder copy — replace every field
          with your real process, decisions, and learnings.      */
       caseStudy: {
-        role:     "Designer & Developer",
-        timeline: "★ EDIT: e.g. a weekend, 1 week",
-        overview: `A self-directed project built to sharpen vanilla front-end skills — combining hand-drawn illustration with interactive HTML, CSS, and JavaScript animation, inspired by a YouTube tutorial series.`,
-        problem:  `★ EDIT: what were you trying to learn or prove with this project — animation timing, DOM manipulation, illustration-to-web workflow?`,
-        process: [
-          {
-            title: "Concept & Illustration",
-            body:  `★ EDIT: how did you sketch/illustrate the assets in Microsoft Paint, and what was the creative direction?`,
-          },
-          {
-            title: "Structure & Layout",
-            body:  `★ EDIT: how did you plan the HTML structure and CSS layout for the animated scenes?`,
-          },
-          {
-            title: "Animation & Interaction",
-            body:  `★ EDIT: what interactions or animations did you build with JavaScript, and what was tricky about getting them to feel right?`,
-          },
-          {
-            title: "Polish & Deploy",
-            body:  `★ EDIT: how did you test across browsers/screen sizes, and what was involved in deploying it (Netlify, GitHub)?`,
-          },
-        ],
-        outcome: `★ EDIT: what did you learn from building this, and how has it shaped projects since?`,
-      },
+          role: "Designer & Developer",
+          timeline: "2 days",
+
+          overview: `A self-directed project built to strengthen my vanilla front-end skills by combining hand-drawn illustrations with interactive HTML, CSS, and JavaScript animations. Inspired by a YouTube tutorial series, I used the project as an opportunity to explore how traditional illustration could be brought to life through code.`,
+
+          problem: `I wanted to better understand how JavaScript could animate static images while improving my knowledge of DOM manipulation, animation timing, and front-end interactions. At the same time, I challenged myself to integrate my illustration skills into a web project instead of relying on pre-made assets.`,
+
+          process: [
+            {
+              title: "Concept & Illustration",
+              body: `I created every illustration in Microsoft Paint, using my own recorded movements as reference. By recording myself performing each action and tracing key frames from the video, I was able to maintain consistent proportions, perspective, and natural motion throughout the animation sequence.`,
+            },
+            {
+              title: "Structure & Layout",
+              body: `The base HTML structure and CSS layout were provided through the tutorial, allowing me to focus primarily on understanding how the illustrations and JavaScript interacted. This let me spend more time experimenting with the animation logic rather than building the page structure from scratch.`,
+            },
+            {
+              title: "Animation & Interaction",
+              body: `The animations were driven entirely by vanilla JavaScript, swapping static illustration frames at carefully timed intervals to simulate movement. The biggest challenge was fine-tuning the animation timing—small adjustments to delays and frame changes made a significant difference in how smooth and believable the motion felt, requiring frequent testing and iteration.`,
+            },
+            {
+              title: "Polish & Deploy",
+              body: `After completing the animations, I verified that the experience remained consistent across different screen sizes and modern browsers. The project was version-controlled with GitHub and deployed on Netlify, providing a simple workflow for publishing updates and sharing the finished project online.`,
+            },
+          ],
+
+          outcome: `This project deepened my understanding of vanilla JavaScript, particularly animation timing, DOM manipulation, and interactive front-end development. It also gave me hands-on experience using GitHub and Netlify for deployment while reinforcing how illustration and programming can work together to create engaging web experiences. As an extra feature, I implemented a light and dark mode toggle, further expanding my JavaScript skills beyond the original tutorial.`,
+        }
     },
     {
       id:             "proj4",
@@ -246,31 +252,35 @@ const PORTFOLIO_DATA = {
       /* ── Case study content ─────────────────────────────────
          ★ EDIT: this is placeholder copy — replace every field
          with your real process, decisions, and learnings.      */
-      caseStudy: {
-        role:     "UI/UX Designer",
-        timeline: "★ EDIT: e.g. 1 week design assessment",
-        overview: `A conceptual redesign of the Maxicare mobile app, built as a design assessment for a job application. The goal was to simplify complex health-related information into an intuitive, business-driven mobile experience.`,
-        problem:  `★ EDIT: what pain point in the existing Maxicare app (or healthcare apps generally) were you asked to solve? Who was the target user?`,
-        process: [
-          {
-            title: "Research & Discovery",
-            body:  `★ EDIT: what user research or competitive analysis did you do — interviews, surveys, reviewing the existing app's pain points?`,
-          },
-          {
-            title: "Define & Ideate",
-            body:  `★ EDIT: how did you turn research into problem statements, user personas, or user flows? Any information-architecture decisions worth calling out?`,
-          },
-          {
-            title: "Wireframes & Prototyping",
-            body:  `★ EDIT: how did you move from low-fidelity wireframes to interactive Figma prototypes? What key screens did you focus on?`,
-          },
-          {
-            title: "Testing & Iteration",
-            body:  `★ EDIT: did you run usability testing or get feedback? What changed as a result?`,
-          },
-        ],
-        outcome: `★ EDIT: what was the final deliverable, and what feedback did you get on it (from the employer, peers, or testers)?`,
-      },
+          caseStudy: {
+          role: "UI/UX Designer",
+          timeline: "10-day Design Assessment",
+
+          overview: `A conceptual redesign of the Maxicare mobile app created as part of a design assessment for a job application. The objective was to simplify complex healthcare interactions into a more intuitive mobile experience while balancing user needs with business goals.`,
+
+          problem: `Healthcare apps should be easy for everyone to use, regardless of age or technical ability. Through my review of the existing experience, I identified several opportunities for improvement: making the Digital Maxicare Card more accessible, streamlining appointment booking, helping members quickly understand their healthcare coverage and benefits, reducing the number of steps required to complete common tasks, and improving the visibility of important information such as accredited clinics, doctors, and upcoming appointments.`,
+
+          process: [
+            {
+              title: "Research & Discovery",
+              body: `I started by speaking with friends and colleagues who actively use Maxicare to understand their frustrations with the existing appointment booking experience and day-to-day use of the service. I complemented these conversations by reviewing competing healthcare apps such as mWell, KonsultaMD, NowServing, HealthNow, and Intellicare's mobile experience to identify common interaction patterns and best practices. This research helped me understand what users expected from a modern healthcare application and where the Maxicare experience could be improved.`,
+            },
+            {
+              title: "Define & Ideate",
+              body: `After gathering feedback, I organized recurring issues into clear design priorities rather than trying to solve everything at once. I focused on reducing friction for the tasks users perform most often: viewing their digital healthcare card, booking appointments, checking their coverage, and finding accredited providers. My goal was to surface the most important information first, reduce unnecessary navigation, and create a dashboard that answered users' questions before they had to search for them.`,
+            },
+            {
+              title: "Wireframes & Prototyping",
+              body: `I began with low-fidelity sketches using pen and paper to quickly explore different layouts and navigation patterns. Once I finalized the overall app architecture, I recreated the experience in Figma with interactive prototypes. I focused primarily on redesigning the dashboard and appointment booking flow, ensuring the most frequently used features were easy to access and complete.`,
+            },
+            {
+              title: "Testing & Iteration",
+              body: `I shared the interactive prototype with several Maxicare users and gathered feedback on the navigation, terminology, and booking flow. Based on their input, I refined the information hierarchy, simplified several interface elements, and adjusted the booking process to reduce confusion and make the experience feel more straightforward.`,
+            },
+          ],
+
+          outcome: `The final deliverable was a fully interactive Figma prototype demonstrating a redesigned healthcare experience centered on accessibility and ease of use. The concept received positive feedback from the Maxicare users that I have interviewed from the user research part, who found the redesigned dashboard easier to understand and the appointment booking process more intuitive than the existing experience. Beyond the assessment itself, the project strengthened my ability to translate user feedback into practical interface improvements while designing for users with varying levels of digital literacy.`,
+        },
     },
     {
       id:             "proj5",
