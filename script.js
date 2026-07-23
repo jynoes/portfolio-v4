@@ -297,30 +297,34 @@ const PORTFOLIO_DATA = {
          ★ EDIT: this is placeholder copy — replace every field
          with your real process, decisions, and learnings.      */
       caseStudy: {
-        role:     "UI/UX Designer & Developer",
-        timeline: "★ EDIT: e.g. 3 weeks",
-        overview: `SG Bank needed a website that felt trustworthy and credible for a rural banking audience in Dumaguete, while clearly presenting its financial products. I designed and developed the site in Figma and WordPress.`,
-        problem:  `★ EDIT: what made this project distinct — a need for accessibility for a wide range of users, trust-building for a financial brand, or presenting many product types clearly?`,
-        process: [
-          {
-            title: "Research & Discovery",
-            body:  `★ EDIT: what did you look at — other rural/community bank sites, accessibility standards, the client's existing materials?`,
-          },
-          {
-            title: "Wireframes & Structure",
-            body:  `★ EDIT: how did you organize the many financial products and services into a clear, navigable structure?`,
-          },
-          {
-            title: "Visual Design",
-            body:  `★ EDIT: how did you balance "trustworthy bank" with an approachable, modern feel? Color, typography, imagery choices?`,
-          },
-          {
-            title: "Build & QA",
-            body:  `★ EDIT: how did you build and test the site for accessibility, responsiveness, and performance before launch?`,
-          },
-        ],
-        outcome: `★ EDIT: what was the result — client satisfaction, improved credibility, positive customer feedback?`,
-      },
+          role: "UI/UX Designer & Developer",
+          timeline: "1 month, 2 weeks",
+
+          overview: `SG Bank needed a website that would establish trust and credibility for a rural banking audience while clearly communicating its financial products and services. I led both the UI/UX design in Figma and the WordPress development, creating a responsive experience that aligned with the bank's identity and business objectives.`,
+
+          problem: `Designing for the financial sector required balancing a professional, trustworthy appearance with the approachable personality of a community-focused rural bank. Another challenge was collaborating with stakeholders remotely, as the client was based in Dumaguete, requiring frequent online reviews, clear communication, and iterative feedback throughout the project.`,
+
+          process: [
+            {
+              title: "Research & Discovery",
+              body: `Since I had previously designed the bank's marketing materials and print collateral, I already had a solid understanding of its visual identity and brand values. I used these assets as the foundation for the website while reviewing other rural and community bank websites to identify common design patterns, navigation structures, and ways financial information could be presented more clearly. This research ensured the final experience felt familiar, credible, and aligned with customer expectations.`,
+            },
+            {
+              title: "Wireframes & Structure",
+              body: `I organized the website around the products and services customers search for most frequently, ensuring each offering could be found quickly without overwhelming visitors. Throughout the design process, I regularly aligned with stakeholders to verify product details, banking terminology, and business priorities, allowing the information architecture to evolve alongside the bank's goals.`,
+            },
+            {
+              title: "Visual Design",
+              body: `The visual design remained consistent with SG Bank's existing brand identity while modernizing the overall experience. I used the bank's established colors to reinforce familiarity and trust, paired with a clean layout, readable typography, and clear visual hierarchy to make financial information easier to understand. The result was a professional interface that reflected the credibility expected of a financial institution while remaining approachable for a local community audience.`,
+            },
+            {
+              title: "Build & QA",
+              body: `I developed the website in WordPress using Elementor with a strong focus on responsiveness and performance. Images were optimized to improve loading speed, layouts were tested across desktop and mobile devices, and key user flows were reviewed to ensure customers could easily access banking information regardless of the device they were using.`,
+            },
+          ],
+
+          outcome: `The website was successfully launched as SG Bank's digital presence, providing a more credible and professional platform for communicating its products and services. The final solution aligned with the bank's branding, met stakeholder expectations despite a fully remote collaboration process, and strengthened the institution's online credibility for both existing and prospective customers.`,
+        },
     },
   ],
 
