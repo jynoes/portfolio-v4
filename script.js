@@ -66,7 +66,7 @@ const PORTFOLIO_DATA = {
 
   /* ── About ────────────────────────────────────────────────── */
   /* photo: path to your image file, or leave empty string "" for emoji */
-  photo:       "",
+  photo:       "images/Jynoe Sabido Profile Picture.jpg",
   photoEmoji:  "🧑‍💻",
   aboutHeading: "A little about me.",
   aboutParagraphs: [
